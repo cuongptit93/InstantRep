@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="pushwoosh-4.9.0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.pushwoosh/pushwoosh/4.9.0/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.pushwoosh/pushwoosh/4.9.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

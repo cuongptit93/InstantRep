@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">An Instant Reply</string>
+    <string name="title_activity_home">Home Activity</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>コンテンツ</item>
+        <item>お気に入り</item>
+        <item>設定</item>
+        <item>ヘルプ</item>
+        <item>ブログ</item>
+        <item>お問い合わせ</item>
+        <item>続きから学習</item>
+        <item>アプリを評価</item>
+    </string-array>
+
+    <string name="learning_objective_default_text">目標：タップして目標入力</string>
+
+    <string name="learning_day_text">学習日数</string>
+    <string name="learning_hour_text">学習時間</string>
+    <string name="question_tried_text">回答数</string>
+
+
+    <!-- Objective input dialog text-->
+    <string name="objective_dialog_title">目標</string>
+    <string name="objective_dialog_message">目標を入力してください</string>
+    <string name="objective_dialog_cancel">キャンセル</string>
+    <string name="objective_dialog_ok">OK</string>
+    <string name="objective_dialog_input_hint">タップして目標入力</string>
+
+    <!-- Theme content package action button title based on state-->
+    <string name="state_load_price_text">購入</string>
+    <string name="state_download_text">ダウンロード</string>
+    <string name="state_update_text">アップデート</string>
+
+    <!-- Theme content package set button text -->
+    <string name="theme_1_set_1_purchase_text">セットコンテンツ1-2</string>
+    <string name="theme_1_set_2_purchase_text">セットコンテンツ3-5</string>
+    <string name="theme_2_set_1_purchase_text">セットコンテンツ1-4</string>
+    <string name="theme_2_set_2_purchase_text">セットコンテンツ5-8</string>
+    <string name="purchase_all_text">Buy All</string>
+
+    "Set_1to2_Text" = "";
+    "Set_3to5_Text" = "";
+    "Set_1to4_Text" = "";
+    "Set_5to8_Text" = "";
+
+    <!-- Internet Connection Error Message-->
+    <string name="internet_connection_error_message">No Internet Connection Available</string>
+    <!-- progress bar message-->
+    <string name="download_progress_message">ダウンロード中...</string>
+    <string name="update_progress_message">アップデート中...</string>
+    <string name="unzip_progress_message">ダウンロードしたファイルを解凍中...</string>
+
+    <!-- Alert ok text-->
+    <string name="alert_ok">OK</string>
+
+    <!-- download dfailed message-->
+    <string name="download_error_message">ダウンロードを失敗しました、もう一度やり直してください！</string>
+
+    <!-- unzip failed message-->
+    <string name="unzip_error_message">Failed to unzip ,Try again!</string>
+
+    <!--sentence play mode list -->
+    <string-array name="play_mode_list">
+        <item>CHUNK英作文で学習する</item>
+        <item>瞬間英作文連続学習</item>
+    </string-array>
+
+
+    <!-- Sentence No Title-->
+    <string name="sentence_no_title">問題NO</string>
+
+    <!-- Action Sheet text-->
+    <string-array name="action_sheet_initial_item">
+        <item>始めから学習</item>
+        <item>順番をシャッフル</item>
+    </string-array>
+    <string-array name="action_sheet_item">
+        <item>始めから学習</item>
+        <item>続きから学習</item>
+        <item>順番をシャッフル</item>
+    </string-array>
+    <string name="action_sheet_cancel">キャンセル</string>
+
+    <string name="play_back_button_text">終了</string>
+
+    <!--auto play button text based on state(on/off)-->
+    <string name="auto_play_off_state_text">自動再生OFF</string>
+    <string name="auto_play_on_state_text">自動再生ON</string>
+
+    <string name="sentence_no">問題</string>
+
+    <!-- play back dialog text-->
+    <string name="play_exit_dialog_title">終了</string>
+    <string name="play_exit_dialog_message">問題を終了しますか？</string>
+    <string name="play_exit_dialog_ok">OK</string>
+    <string name="play_exit_dialog_cancel">キャンセル</string>
+
+    <!-- Auto Play on/off Confirmation-->
+    <string name="turn_on_auto_play_title">自動再生ON</string>
+    <string name="turn_on_auto_play_message">自動再生を開始しますか？</string>
+
+    <string name="turn_off_auto_play_title">自動再生OFF</string>
+    <string name="turn_off_auto_play_message">自動再生を終了しますか？</string>
+
+    <!-- Senetence limit cross alert-->
+    <string name="limit_cross_title">注意</string>
+    <string name="limit_cross_text">このカテゴリーの問題は終了しました。</string>
+
+    <!-- Favorite Add Toast Message-->
+    <string name="favorite_add_msg">お気に入りに追加</string>
+    <!-- Favorite Remove Toast Message-->
+    <string name="favorite_remove_msg">お気に入りから削除</string>
+
+    <!-- Settings Text-->
+    <string name="autoplay_title">自動再生</string>
+    <string name="auto_next_sentence">自動セクション移動</string>
+    <string name="chunkplay_header_title">学習 制限時間</string>
+    <string name="chunkplay_timer_title">Chunk英作文</string>
+    <string name="chunkplay_interval_title">瞬間英作文</string>
+    <string name="autoplay_interval_title">自動再生学習ポーズ</string>
+    <string name="clear_settings_title">学習記録を全て消去する</string>
+    <string name="version_title">バージョン情報</string>
+    <string name="version_value">1.0.0</string>
+    <string name="settings_time_unit"> 秒</string>
+    <string name="audio_speed_setting">Audio Speed</string>
+    <string name="audio_volumn_setting">Volume</string>
+
+    <string name="settingclear_dialog_title">学習記録を全て消去する</string>
+    <string name="settingclear_dialog_message">学習記録を全て消去しますか？</string>
+
+    <string name="email_chooser_title">メールを送る</string>
+
+    <!-- Audio File not found alert-->
+    <string name="audio_not_found_title">Audio File</string>
+    <string name="audio_not_found_message">Audio file not found in SD card</string>
+
+    <!-- All purchase sentences -->
+    <string name="all_purchase_content_title">購入コンテンツ全文で学習</string>
+    <string name="no_purchase_content_dialog_message">まだコンテンツはありません</string>
+</resources>

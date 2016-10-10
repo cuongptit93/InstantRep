@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_back_color"
+    tools:context="jp.co.efusion.aninstantreply.ChunkPlayActivity">
+
+    <!-- Customize Action Bar-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/icon_close"
+            android:drawablePadding="-8sp"
+            android:textColor="@android:color/darker_gray"
+            android:onClick="exitButtonPressed"
+            android:text="@string/play_back_button_text"
+            android:layout_alignParentLeft="true"/>
+
+        <!--android:background="@android:color/transparent"-->
+        <Button
+            android:id="@+id/autoPLayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            android:background="@android:color/transparent"
+            android:textColor="@color/blue_color"
+            android:onClick="autoPlayButtonPressed"
+            android:layout_alignParentRight="true"/>
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/black_color"
+            android:layout_toRightOf="@+id/exitButton"
+            android:layout_toLeftOf="@+id/autoPLayButton"
+            android:textSize="@dimen/statistics_value_size"/>
+    </RelativeLayout>
+
+    <jp.co.efusion.utility.CustomViewPager
+        android:id="@+id/swipeViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

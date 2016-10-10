@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Instant Reply</string>
+    <string name="title_activity_home">Home Activity</string>
+
+    <!-- Ad Unit id for bannar & interstitial-->
+    <string name="banner_ad_unit_id">ca-app-pub-6524269297307362/4931098735</string>
+    <!--<string name="interstitial_ad_unit_id"></string>-->
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Content List</item>
+        <item>Favorite</item>
+        <item>Setting</item>
+        <item>Help</item>
+        <item>Blog</item>
+        <item>Contact Us</item>
+        <item>Last Sentence</item>
+        <item>Ratting</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/icon_contents</item>
+        <item>@drawable/icon_fav</item>
+        <item>@drawable/icon_setting</item>
+        <item>@drawable/icon_help</item>
+        <item>@drawable/icon_blog</item>
+        <item>@drawable/icon_contact</item>
+    </array>
+
+
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <string name="learning_objective_default_text">Why I learn english</string>
+
+    <string name="learning_day_text">Learning Days</string>
+    <string name="learning_hour_text">Learning Hours</string>
+    <string name="question_tried_text">Question Tried</string>
+
+
+    <!-- Objective input dialog text-->
+    <string name="objective_dialog_title">Goal</string>
+    <string name="objective_dialog_message">Why you learning english</string>
+    <string name="objective_dialog_cancel">Cancel</string>
+    <string name="objective_dialog_ok">Ok</string>
+    <string name="objective_dialog_input_hint">Input</string>
+
+    <!-- Theme content package action button title based on state-->
+    <string name="state_load_price_text">purchase</string>
+    <string name="state_download_text">download</string>
+    <string name="state_update_text">update</string>
+
+    <!-- Theme content package set button text -->
+    <string name="theme_1_set_1_purchase_text">Buy 1 to 2</string>
+    <string name="theme_1_set_2_purchase_text">Buy 3 to 5</string>
+    <string name="theme_2_set_1_purchase_text">Buy 1 to 4</string>
+    <string name="theme_2_set_2_purchase_text">Buy 5 to 8</string>
+    <string name="purchase_all_text">Buy All</string>
+
+    <!-- Internet Connection Error Message-->
+    <string name="internet_connection_error_message">No Internet Connection Available</string>
+
+    <!-- progress bar message-->
+    <string name="download_progress_message">Downloading, Please wait...</string>
+    <string name="update_progress_message">Updating, Please wait...</string>
+    <string name="unzip_progress_message">Unzipping downloaded file, Please wait...</string>
+
+    <!-- Alert ok text-->
+    <string name="alert_ok">Ok</string>
+
+    <!-- download dfailed message-->
+    <string name="download_error_message">Failed to download ,Try again!</string>
+
+    <!-- unzip failed message-->
+    <string name="unzip_error_message">Failed to unzip ,Try again!</string>
+
+    <!--sentence play mode list -->
+    <string-array name="play_mode_list">
+        <item>Chunk Mode Play</item>
+        <item>Normal Mode Play</item>
+    </string-array>
+
+
+    <!-- Sentence No Title-->
+    <string name="sentence_no_title">Sentence No</string>
+
+    <!-- Action Sheet text-->
+    <string-array name="action_sheet_initial_item">
+        <item>Home</item>
+        <item>Setting</item>
+        <item>Normal Play</item>
+        <item>Start after shuffle</item>
+    </string-array>
+
+   <!-- &lt;!&ndash; Action Sheet text&ndash;&gt;
+    <string-array name="action_sheet_initial_item">
+        <item>Normal Play</item>
+        <item>Start after shuffle</item>
+        <item>Home</item>
+        <item>Setting</item>
+    </string-array>
+-->
+
+    <string-array name="action_sheet_item">
+        <item>Normal Play</item>
+        <item>Home</item>
+        <item>Setting</item>
+        <item>Start from last played Question</item>
+        <item>Start after shuffle</item>
+    </string-array>
+    <string name="action_sheet_cancel">Cancel</string>
+
+    <string name="play_back_button_text">Back</string>
+
+    <!--auto play button text based on state(on/off)-->
+    <string name="auto_play_off_state_text">AutoPlay ON</string>
+    <string name="auto_play_on_state_text">AutoPlay OFF</string>
+
+    <string name="sentence_no">問題</string>
+
+    <!-- play back dialog text-->
+    <string name="play_exit_dialog_title">Exit</string>
+    <string name="play_exit_dialog_message">Are you sure ?</string>
+    <string name="play_exit_dialog_ok">Ok</string>
+    <string name="play_exit_dialog_cancel">Cancel</string>
+
+    <!-- Auto Play on/off Confirmation-->
+    <string name="turn_on_auto_play_title">Turn On</string>
+    <string name="turn_on_auto_play_message">Are you sure to turn on auto play?</string>
+
+    <string name="turn_off_auto_play_title">Turn Off</string>
+    <string name="turn_off_auto_play_message">Are you sure to turn off auto play?</string>
+
+    <!-- Senetence limit cross alert-->
+    <string name="limit_cross_title">Attention</string>
+    <string name="limit_cross_text">No more sentence exist in this limit</string>
+
+    <!-- Audio File not found alert-->
+    <string name="audio_not_found_title">Audio File</string>
+    <string name="audio_not_found_message">Audio file not found in SD card</string>
+
+    <!-- Favorite Add Toast Message-->
+    <string name="favorite_add_msg">Added to favorite..</string>
+    <!-- Favorite Remove Toast Message-->
+    <string name="favorite_remove_msg">Removed from favorite..</string>
+
+    <!-- Settings Text-->
+    <string name="disable">Disable Item</string>
+    <string name="autoplay_title">Auto Play</string>
+    <string name="auto_next_sentence">Auto Next Sentence</string>
+    <string name="chunkplay_header_title">Chunk Setting</string>
+    <string name="chunkplay_timer_title">ChunkPlay Timer Time </string>
+    <string name="chunkplay_interval_title">ChunkPlay Interval Time</string>
+    <string name="autoplay_interval_title">AutoPlay Interval Time</string>
+    <string name="clear_settings_title">Clear Settings</string>
+    <string name="version_title">Version</string>
+    <string name="version_value">1.0.0</string>
+    <string name="settings_time_unit"> S</string>
+    <string name="audio_speed_setting">Audio Speed</string>
+    <string name="audio_volumn_setting">Volume</string>
+
+    <string name="settingclear_dialog_title">Clear Settings</string>
+    <string name="settingclear_dialog_message">Are you sure to clear?</string>
+
+    <string name="email_chooser_title">Send mail...</string>
+
+    <!-- All purchase sentences -->
+    <string name="all_purchase_content_title">購入コンテンツ全文で学習</string>
+    <string name="shuffle_all_purchase_sentences">全文でシャッフル</string>
+    <string name="no_purchase_content_dialog_message">No purchase sentence</string>
+
+    <!-- Ratting -->
+    <string name="ratting_content">An instant replyの評価のお願いいつもご利用いただきありがとうございます。An instant replyの評価にご協力ください。評価は簡単に完了します。ご協力お願いいたします。</string>
+    <string name="ratting_button_rate_app">評価する</string>
+    <string name="ratting_button_cancel">評価しない</string>
+
+
+    <!--List Setting Begin-->
+    <string-array name="settingApp">
+        <item>Disable Item</item>
+        <item>Auto Play</item>
+        <item>Auto Next Sentence</item>
+        <item>Chunk Setting</item>
+        <item>ChunkPlay Timer Time</item>
+        <item>ChunkPlay Interval Time</item>
+        <item>Disable Item</item>
+        <item>AutoPlay Interval Time</item>
+        <item>Audio Speed</item>
+        <item>Disable Item</item>
+        <item>Volume</item>
+        <item>Disable Item</item>
+        <item>Clear Settings</item>
+        <item>Disable Item</item>
+        <item>Version</item>
+        <item>Disable Item</item>
+    </string-array>
+    <!--List Setting end-->
+
+
+</resources>

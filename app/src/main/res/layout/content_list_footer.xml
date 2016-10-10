@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_set1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/purchaseSet1Button"
+            android:layout_width="@dimen/purchase_button_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/gray_color"
+            android:gravity="center"
+            android:onClick="purchaseSet1Pressed"
+            android:textColor="@color/black_color" />
+
+        <TextView
+            android:id="@+id/purchaseSet1TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/purchaseSet1Button"
+            android:gravity="center_vertical"
+            android:padding="7dp"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_set2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?android:attr/listDivider"
+            android:enabled="false" />
+
+        <TextView
+            android:id="@+id/purchaseSet2TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/purchaseSet2Button"
+            android:layout_width="@dimen/purchase_button_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_color"
+            android:gravity="center"
+            android:onClick="purchaseSet2Pressed" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_buyAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?android:attr/listDivider"
+            android:enabled="false" />
+
+        <TextView
+            android:id="@+id/purchaseAllTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/purchaseAllButton"
+            android:layout_width="@dimen/purchase_button_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_color"
+            android:gravity="center"
+            android:onClick="purchaseAllPressed" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

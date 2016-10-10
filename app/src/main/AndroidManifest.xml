@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jp.co.efusion.aninstantreply">
+
+    <!-- Network State Permissions to detect Internet status -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Permission: Allow Connect to Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permission: Writing to SDCard -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Permission: Read to SDCard -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Permission: InAppPurchase -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+
+    <!-- Permission to get DeviceId -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Enables vibration permission for notification. -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!--
+     Creates a custom permission so only this app can receive its messages.
+
+     NOTE: the permission *must* be called PACKAGE.permission.C2D_MESSAGE,
+           where PACKAGE is the application's package name.
+    -->
+    <!--<permission-->
+    <!--android:name="jp.co.efusion.aninstantreply.permission.C2D_MESSAGE"-->
+    <!--android:protectionLevel="signature"/>-->
+    <!--<uses-permission-->
+    <!--android:name="jp.co.efusion.aninstantreply.permission.C2D_MESSAGE"/>-->
+
+    <!--&lt;!&ndash; This app has permission to register and receive data message. &ndash;&gt;-->
+    <!--<uses-permission-->
+    <!--android:name="com.google.android.c2dm.permission.RECEIVE"/>-->
+
+    <permission
+        android:name="jp.co.efusion.aninstantreply.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="jp.co.efusion.aninstantreply.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ThemeContentActivity"
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jp.co.efusion.aninstantreply.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".SentenceSetActivity"
+            android:parentActivityName=".ThemeContentActivity"
+            android:screenOrientation="portrait">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jp.co.efusion.aninstantreply.ThemeContentActivity" />
+        </activity>
+        <activity
+            android:name=".SentenceSetDetailsActivity"
+            android:parentActivityName=".SentenceSetActivity"
+            android:screenOrientation="portrait">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jp.co.efusion.aninstantreply.SentenceSetActivity" />
+        </activity>
+        <activity
+            android:name=".SentenceActivity"
+            android:parentActivityName=".SentenceSetDetailsActivity"
+            android:screenOrientation="portrait">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jp.co.efusion.aninstantreply.SentenceSetDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".NormalPlayActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ChunkPlayActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <service
+            android:name=".NormalPlayService"
+            android:enabled="true"></service>
+        <service
+            android:name=".ChunkPlayService"
+            android:enabled="true"></service>
+
+        <!-- Crashlytics -->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="2498c63ae71a094ead34e4960bb514a1ebd69e82" />
+
+        <meta-data
+            android:name="PW_APPID"
+            android:value="61EB7-74B6B" />
+        <meta-data
+            android:name="PW_PROJECT_ID"
+            android:value="A342346063673" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name="com.pushwoosh.richpages.RichPageActivity" />
+        <activity android:name="com.pushwoosh.MessageActivity" />
+        <activity android:name="com.pushwoosh.PushHandlerActivity" />
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="jp.co.efusion.aninstantreply" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.pushwoosh.GCMListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.pushwoosh.GCMInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.pushwoosh.GCMRegistrationService"
+            android:exported="false"></service>
+
+        <receiver android:name="com.pushwoosh.local.AlarmReceiver" />
+    </application>
+</manifest>

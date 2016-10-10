@@ -1,0 +1,29 @@
+<resources>
+    <color name="theme_color_green">#ff9dd21d</color>
+    <color name="app_back_color">#FFFEFEFE</color>
+
+    <color name="drawer_list_select">#ff9dd21d</color>
+    <color name="white_color">#ffffff</color>
+    <color name="black_color">#000000</color>
+    <color name="gray_color">#39020e0c</color>
+
+    <color name="light_gray_color">#39020e0c</color>
+
+
+
+    <color name="learning_objective_back_color">#ff7c9c18</color>
+    <color name="statistics_back_color">#ff708d17</color>
+    <color name="fragment_back_color">#ffebebf1</color>
+
+    <color name="objective_dialog_back_color">#ffe5e5e6</color>
+
+    <!-- Sentence Play Screen Color-->
+    <color name="blue_color">#ff429cf6</color>
+    <color name="question_back_color">#ffededed</color>
+    <color name="answer_back_color">#ffe1eefd</color>
+
+    <color name="yellow_color">#fffff219</color>
+
+    <color name="red_color">@android:color/holo_red_light</color>
+     <color name="background_tutotrial">#0a5384</color>
+</resources>

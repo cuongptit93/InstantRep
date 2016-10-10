@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jp.co.efusion.fragments.ContactFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_color">
+        <TextView
+            android:id="@+id/contactUsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingBottom="7dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="7dp"
+            android:background="@color/white_color"
+            android:textColor="@color/blue_color"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/statistics_value_size"/>
+    </RelativeLayout>
+
+</FrameLayout>

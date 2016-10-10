@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <RelativeLayout
+        android:id="@+id/rightView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/navigationImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ic_navigation"/>
+        <Button
+            android:id="@+id/contentButton"
+            android:layout_width="@dimen/purchase_button_width"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:background="@color/gray_color"
+            android:gravity="center"
+            android:onClick="purchaseButtonPressed"
+            android:text="@string/state_load_price_text"/>
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_color"
+        android:padding="7dp"
+        android:gravity="center_vertical"
+        android:layout_toLeftOf="@+id/rightView"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

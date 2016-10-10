@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/itemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/white_color"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/settingsTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black_color"
+            android:textSize="@dimen/statistics_value_size" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/settingsValueTextView"
+            android:layout_toRightOf="@+id/settingsTitleTextView"
+            android:layout_weight="1"
+            android:progress="50"
+            android:secondaryProgress="0"
+            android:visibility="gone" />
+
+        <Switch
+            android:id="@+id/autoPlaySwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/navigationImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/autoPlaySwitch"
+            android:background="@drawable/ic_navigation"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/settingsValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/navigationImageView"
+            android:textColor="@color/black_color"
+            android:textSize="@dimen/statistics_value_size"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
