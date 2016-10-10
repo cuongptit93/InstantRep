@@ -509,17 +509,21 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 //check start point value limit
                 if (startPoint < 0) {
                     if (isAutoNextSentences(sharedPreferences, contentID)) {
-                        purchaseIndicator--;
-                        if(purchaseIndicator <0){
+                        if(purchaseIndicator == 0){
                             sentenceLimitAlert();
-                            return;
-                        }
-                        if (!getNextSentences(databaseHelper, purchaseIndicator, true)) {
-                            purchaseIndicator++;
                             startPoint = 0;
-                            sentenceLimitAlert();
                             return;
                         }
+                        else{
+                            purchaseIndicator--;
+                            if (!getNextSentences(databaseHelper, purchaseIndicator, true)) {
+                                purchaseIndicator++;
+                                startPoint = 0;
+                                sentenceLimitAlert();
+                                return;
+                            }
+                        }
+
                     } else {
                         startPoint = 0;
                         sentenceLimitAlert();

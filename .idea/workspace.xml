@@ -32,9 +32,10 @@
       <file leaf-file-name="PlayActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6091476">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.23333333">
+              <caret line="292" column="37" selection-start-line="292" selection-start-column="37" selection-end-line="292" selection-end-column="37" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#7124#7125#0" expanded="true" />
                 <element signature="e#7153#7154#0" expanded="true" />
                 <element signature="e#9962#10248#0" expanded="true" />
@@ -53,32 +54,42 @@
                 <element signature="e#16254#16511#0" expanded="true" />
                 <element signature="e#16510#16511#0" expanded="true" />
                 <element signature="e#16554#16555#0" expanded="true" />
-                <element signature="e#18405#22204#0" expanded="true" />
-                <element signature="e#21862#22160#0" expanded="true" />
-                <element signature="e#22159#22160#0" expanded="true" />
-                <element signature="e#22203#22204#0" expanded="true" />
-                <element signature="e#22278#23401#0" expanded="true" />
-                <element signature="e#23400#23401#0" expanded="true" />
-                <element signature="e#24887#24943#0" expanded="true" />
-                <element signature="e#24945#25003#0" expanded="true" />
-                <element signature="e#25411#25463#0" expanded="true" />
-                <element signature="e#25465#25516#0" expanded="true" />
-                <element signature="e#26487#26520#0" expanded="true" />
-                <element signature="e#26523#26555#0" expanded="true" />
-                <element signature="e#26616#26651#0" expanded="true" />
-                <element signature="e#26654#26688#0" expanded="true" />
-                <element signature="e#28803#28860#0" expanded="true" />
-                <element signature="e#28862#28921#0" expanded="true" />
-                <element signature="e#32563#32564#0" expanded="true" />
-                <element signature="e#32592#32593#0" expanded="true" />
-                <element signature="e#41069#41070#0" expanded="true" />
-                <element signature="e#41108#41109#0" expanded="true" />
-                <element signature="e#41481#41482#0" expanded="true" />
-                <element signature="e#41508#41509#0" expanded="true" />
-                <element signature="e#44979#44980#0" expanded="true" />
-                <element signature="e#45012#45013#0" expanded="true" />
-                <element signature="e#45909#45937#0" expanded="true" />
+                <element signature="e#18405#22335#0" expanded="true" />
+                <element signature="e#21993#22291#0" expanded="true" />
+                <element signature="e#22290#22291#0" expanded="true" />
+                <element signature="e#22334#22335#0" expanded="true" />
+                <element signature="e#22409#23532#0" expanded="true" />
+                <element signature="e#23531#23532#0" expanded="true" />
+                <element signature="e#25018#25074#0" expanded="true" />
+                <element signature="e#25076#25134#0" expanded="true" />
+                <element signature="e#25542#25594#0" expanded="true" />
+                <element signature="e#25596#25647#0" expanded="true" />
+                <element signature="e#26618#26651#0" expanded="true" />
+                <element signature="e#26654#26686#0" expanded="true" />
+                <element signature="e#26747#26782#0" expanded="true" />
+                <element signature="e#26785#26819#0" expanded="true" />
+                <element signature="e#28934#28991#0" expanded="true" />
+                <element signature="e#28993#29052#0" expanded="true" />
+                <element signature="e#32694#32695#0" expanded="true" />
+                <element signature="e#32723#32724#0" expanded="true" />
+                <element signature="e#41200#41201#0" expanded="true" />
+                <element signature="e#41239#41240#0" expanded="true" />
+                <element signature="e#41612#41613#0" expanded="true" />
+                <element signature="e#41639#41640#0" expanded="true" />
+                <element signature="e#45110#45111#0" expanded="true" />
+                <element signature="e#45143#45144#0" expanded="true" />
+                <element signature="e#46040#46068#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThemeFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/fragments/ThemeFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="121" column="68" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="76" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,13 +106,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SentenceSetDetailsActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.862069">
+              <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SentenceActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1034484">
-              <caret line="139" column="24" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
               <folding>
-                <element signature="e#15018#15046#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#14989#15017#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,8 +132,8 @@
       <file leaf-file-name="ThemeContentActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ThemeContentActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.206897">
-              <caret line="833" column="24" selection-start-line="833" selection-start-column="24" selection-end-line="833" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="197" column="56" selection-start-line="197" selection-start-column="56" selection-end-line="197" selection-end-column="56" />
               <folding>
                 <element signature="e#6961#7017#0" expanded="true" />
                 <element signature="e#7059#7115#0" expanded="true" />
@@ -1923,10 +1945,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ThemeContentActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java" />
       </list>
     </option>
   </component>
@@ -2182,6 +2205,39 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <Native>
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Native>
+      <Java />
+      <Hybrid>
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Hybrid>
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -2221,6 +2277,48 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -2243,6 +2341,34 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -2374,10 +2500,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.1686275">
+          <caret line="185" column="22" selection-start-line="185" selection-start-column="22" selection-end-line="185" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/fragments/ThemeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="68" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ThemeContentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.206897">
-          <caret line="833" column="24" selection-start-line="833" selection-start-column="24" selection-end-line="833" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="197" column="56" selection-start-line="197" selection-start-column="56" selection-end-line="197" selection-end-column="56" />
           <folding>
             <element signature="e#6961#7017#0" expanded="true" />
             <element signature="e#7059#7115#0" expanded="true" />
@@ -2405,16 +2547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1034484">
-          <caret line="139" column="24" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="24" />
-          <folding>
-            <element signature="e#15018#15046#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="26.793104">
@@ -2425,11 +2557,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37199125">
+          <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#14989#15017#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.862069">
+          <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6091476">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.23333333">
+          <caret line="292" column="37" selection-start-line="292" selection-start-column="37" selection-end-line="292" selection-end-column="37" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#7124#7125#0" expanded="true" />
             <element signature="e#7153#7154#0" expanded="true" />
             <element signature="e#9962#10248#0" expanded="true" />
@@ -2448,31 +2608,31 @@
             <element signature="e#16254#16511#0" expanded="true" />
             <element signature="e#16510#16511#0" expanded="true" />
             <element signature="e#16554#16555#0" expanded="true" />
-            <element signature="e#18405#22204#0" expanded="true" />
-            <element signature="e#21862#22160#0" expanded="true" />
-            <element signature="e#22159#22160#0" expanded="true" />
-            <element signature="e#22203#22204#0" expanded="true" />
-            <element signature="e#22278#23401#0" expanded="true" />
-            <element signature="e#23400#23401#0" expanded="true" />
-            <element signature="e#24887#24943#0" expanded="true" />
-            <element signature="e#24945#25003#0" expanded="true" />
-            <element signature="e#25411#25463#0" expanded="true" />
-            <element signature="e#25465#25516#0" expanded="true" />
-            <element signature="e#26487#26520#0" expanded="true" />
-            <element signature="e#26523#26555#0" expanded="true" />
-            <element signature="e#26616#26651#0" expanded="true" />
-            <element signature="e#26654#26688#0" expanded="true" />
-            <element signature="e#28803#28860#0" expanded="true" />
-            <element signature="e#28862#28921#0" expanded="true" />
-            <element signature="e#32563#32564#0" expanded="true" />
-            <element signature="e#32592#32593#0" expanded="true" />
-            <element signature="e#41069#41070#0" expanded="true" />
-            <element signature="e#41108#41109#0" expanded="true" />
-            <element signature="e#41481#41482#0" expanded="true" />
-            <element signature="e#41508#41509#0" expanded="true" />
-            <element signature="e#44979#44980#0" expanded="true" />
-            <element signature="e#45012#45013#0" expanded="true" />
-            <element signature="e#45909#45937#0" expanded="true" />
+            <element signature="e#18405#22335#0" expanded="true" />
+            <element signature="e#21993#22291#0" expanded="true" />
+            <element signature="e#22290#22291#0" expanded="true" />
+            <element signature="e#22334#22335#0" expanded="true" />
+            <element signature="e#22409#23532#0" expanded="true" />
+            <element signature="e#23531#23532#0" expanded="true" />
+            <element signature="e#25018#25074#0" expanded="true" />
+            <element signature="e#25076#25134#0" expanded="true" />
+            <element signature="e#25542#25594#0" expanded="true" />
+            <element signature="e#25596#25647#0" expanded="true" />
+            <element signature="e#26618#26651#0" expanded="true" />
+            <element signature="e#26654#26686#0" expanded="true" />
+            <element signature="e#26747#26782#0" expanded="true" />
+            <element signature="e#26785#26819#0" expanded="true" />
+            <element signature="e#28934#28991#0" expanded="true" />
+            <element signature="e#28993#29052#0" expanded="true" />
+            <element signature="e#32694#32695#0" expanded="true" />
+            <element signature="e#32723#32724#0" expanded="true" />
+            <element signature="e#41200#41201#0" expanded="true" />
+            <element signature="e#41239#41240#0" expanded="true" />
+            <element signature="e#41612#41613#0" expanded="true" />
+            <element signature="e#41639#41640#0" expanded="true" />
+            <element signature="e#45110#45111#0" expanded="true" />
+            <element signature="e#45143#45144#0" expanded="true" />
+            <element signature="e#46040#46068#0" expanded="true" />
           </folding>
         </state>
       </provider>

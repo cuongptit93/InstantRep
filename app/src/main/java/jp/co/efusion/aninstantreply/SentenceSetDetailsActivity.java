@@ -111,7 +111,6 @@ public class SentenceSetDetailsActivity extends ActionBarActivity implements Act
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HashMap<String, Object> obj = (HashMap<String, Object>) parent.getItemAtPosition(position);
                 String listItem = (String) obj.get(Default.MODE_HASMAP_KEY);
-
                 gotoSentenceScreen(listItem);
             }
         });

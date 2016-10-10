@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 import com.google.android.gms.ads.AdRequest;
