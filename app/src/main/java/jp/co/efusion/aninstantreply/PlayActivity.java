@@ -22,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 
@@ -511,6 +510,10 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 if (startPoint < 0) {
                     if (isAutoNextSentences(sharedPreferences, contentID)) {
                         purchaseIndicator--;
+                        if(purchaseIndicator <0){
+                            sentenceLimitAlert();
+                            return;
+                        }
                         if (!getNextSentences(databaseHelper, purchaseIndicator, true)) {
                             purchaseIndicator++;
                             startPoint = 0;

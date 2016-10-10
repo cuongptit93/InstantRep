@@ -135,15 +135,6 @@ public class SentenceSetActivity extends ActionBarActivity {
     }
 
     @Override
-    protected void onStart() {
-        //clear sharedPreferences to Activity Play
-        sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
-        sharedPreferences.edit().remove("contentIDCallBack").commit();
-        sharedPreferences.edit().remove("titleCallBack").commit();
-        super.onStart();
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
@@ -291,6 +282,22 @@ public class SentenceSetActivity extends ActionBarActivity {
             startActivityForResult(intent, Default.HIDDENABLE_REQUEST_CODE);
         } else {
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //get sentenceSetID and Title to PlayActivity (CallBack)
+        if(sharedPreferences.getInt("contentIDCallBack", Default.ZERO)!=0){
+            contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
+            //reload sentence set data
+            loadSentenceSetData();
+
+            //clear sharedPreferences to Activity Play
+            sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
+            sharedPreferences.edit().remove("contentIDCallBack").commit();
+            sharedPreferences.edit().remove("titleCallBack").commit();
         }
     }
 
