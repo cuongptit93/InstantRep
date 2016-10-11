@@ -37,6 +37,7 @@
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/btnShowActionSheet"
             android:layout_toStartOf="@+id/btnShowActionSheet" />
+
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"

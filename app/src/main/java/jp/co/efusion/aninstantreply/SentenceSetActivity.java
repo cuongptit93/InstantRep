@@ -10,12 +10,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.baoyz.actionsheet.ActionSheet;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -32,7 +34,7 @@ import jp.co.efusion.utility.Default;
 import jp.co.efusion.utility.SettingUtils;
 
 
-public class SentenceSetActivity extends ActionBarActivity {
+public class SentenceSetActivity extends ActionBarActivity  implements ActionSheet.ActionSheetListener{
     private static final String TAG = SentenceSetActivity.class.getSimpleName();
 
     DatabaseHelper databaseHelper;
@@ -46,6 +48,8 @@ public class SentenceSetActivity extends ActionBarActivity {
     private int contentID;
     String free_Set;
     String theme_Id;
+
+    MenuItem optionMenu;
 
     //declare admob adview
     private AdView adView;
@@ -85,6 +89,10 @@ public class SentenceSetActivity extends ActionBarActivity {
         } else {
             goToPlayScreen = false;
         }
+
+        //load item Home And Setting to Action sheet.
+        final String[] itemAction = getResources().getStringArray(R.array.action_sheet_initial_item);
+        actionSheetItems = Arrays.copyOf(itemAction, 2);
 
         Log.d(TAG, String.format("free_Set %s; contentID %d; theme_Id %s", free_Set, contentID, theme_Id));
 
@@ -135,13 +143,30 @@ public class SentenceSetActivity extends ActionBarActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_sentence, menu);
+        optionMenu = menu.findItem(R.id.action_option);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
+                //Open setting fragment
                 finish();
                 return true;
+
+            case R.id.action_option:
+                showActionSheet();
+                return true;
+
+            default:
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -288,12 +313,20 @@ public class SentenceSetActivity extends ActionBarActivity {
     @Override
     public void onStart() {
         super.onStart();
-        //get sentenceSetID and Title to PlayActivity (CallBack)
-        if(sharedPreferences.getInt("contentIDCallBack", Default.ZERO)!=0){
-            contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
-            //reload sentence set data
-            loadSentenceSetData();
+        if(contentID!=-1){
+            //get sentenceSetID and Title to PlayActivity (CallBack)
+            if(sharedPreferences.getInt("contentIDCallBack", Default.ZERO)!=0){
+                contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
+                //reload sentence set data
+                loadSentenceSetData();
 
+                //clear sharedPreferences to Activity Play
+                sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
+                sharedPreferences.edit().remove("contentIDCallBack").commit();
+                sharedPreferences.edit().remove("titleCallBack").commit();
+            }
+        }
+        else{
             //clear sharedPreferences to Activity Play
             sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
             sharedPreferences.edit().remove("contentIDCallBack").commit();
@@ -345,5 +378,38 @@ public class SentenceSetActivity extends ActionBarActivity {
 //            SettingUtils.setStudyTime(sharedPreferences, SettingUtils.getStudyTime(this) + learningTime);
             SettingUtils.setStudyTime(this);
         }
+    }
+
+    @Override
+    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+
+    }
+
+    @Override
+    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+        //get Positon showActionSheet
+        switch (index) {
+            case 0:
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                break;
+            case 1:
+                Intent i = new Intent(SentenceSetActivity.this, HomeActivity.class);
+                i.putExtra("check", true);
+                startActivity(i);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void showActionSheet() {
+        ActionSheet.createBuilder(this, getSupportFragmentManager())
+                .setCancelButtonTitle(R.string.action_sheet_cancel)
+                .setOtherButtonTitles(actionSheetItems)
+                .setCancelableOnTouchOutside(true)
+                .setListener(this).show();
     }
 }
