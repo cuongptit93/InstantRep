@@ -24,23 +24,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5cb69f-af11-4ed1-9216-042ac1e13e5c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_3_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_2_6_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_core_2_3_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/fabric_1_3_13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/library_1_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/percent_23_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_ads_8_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_base_8_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_basement_8_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_gcm_8_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_measurement_8_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/pushwoosh_4_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_1_0.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
@@ -51,8 +34,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_normal_play.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_normal_play.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/fragments/SettingFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/fragments/SettingFragment.java" />
     </list>
     <ignored path="InstantRep.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,100 +53,84 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="InstantRep" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+            </PATH>
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="InstantRep" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java">
+      <file leaf-file-name="SentenceSetDetailsActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7068608">
-              <caret line="836" column="0" selection-start-line="836" selection-start-column="0" selection-end-line="836" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SentenceActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7153#7154#0" expanded="true" />
-                <element signature="e#7182#7183#0" expanded="true" />
-                <element signature="e#9991#10277#0" expanded="true" />
-                <element signature="e#10276#10277#0" expanded="true" />
-                <element signature="e#11884#12056#0" expanded="true" />
-                <element signature="e#12055#12056#0" expanded="true" />
-                <element signature="e#12102#12274#0" expanded="true" />
-                <element signature="e#12273#12274#0" expanded="true" />
-                <element signature="e#12316#12514#0" expanded="true" />
-                <element signature="e#12513#12514#0" expanded="true" />
-                <element signature="e#12725#12758#0" expanded="true" />
-                <element signature="e#12813#12845#0" expanded="true" />
-                <element signature="e#14493#15310#0" expanded="true" />
-                <element signature="e#15309#15310#0" expanded="true" />
-                <element signature="e#16044#16584#0" expanded="true" />
-                <element signature="e#16283#16540#0" expanded="true" />
-                <element signature="e#16539#16540#0" expanded="true" />
-                <element signature="e#16583#16584#0" expanded="true" />
-                <element signature="e#18434#22364#0" expanded="true" />
-                <element signature="e#22022#22320#0" expanded="true" />
-                <element signature="e#22319#22320#0" expanded="true" />
-                <element signature="e#22363#22364#0" expanded="true" />
-                <element signature="e#22438#23561#0" expanded="true" />
-                <element signature="e#23560#23561#0" expanded="true" />
-                <element signature="e#25047#25103#0" expanded="true" />
-                <element signature="e#25105#25163#0" expanded="true" />
-                <element signature="e#25571#25623#0" expanded="true" />
-                <element signature="e#25625#25676#0" expanded="true" />
-                <element signature="e#26647#26680#0" expanded="true" />
-                <element signature="e#26683#26715#0" expanded="true" />
-                <element signature="e#26776#26811#0" expanded="true" />
-                <element signature="e#26814#26848#0" expanded="true" />
-                <element signature="e#28963#29020#0" expanded="true" />
-                <element signature="e#29022#29081#0" expanded="true" />
-                <element signature="e#32723#32724#0" expanded="true" />
-                <element signature="e#32752#32753#0" expanded="true" />
-                <element signature="e#41229#41230#0" expanded="true" />
-                <element signature="e#41268#41269#0" expanded="true" />
-                <element signature="e#41641#41642#0" expanded="true" />
-                <element signature="e#41668#41669#0" expanded="true" />
-                <element signature="e#45139#45140#0" expanded="true" />
-                <element signature="e#45172#45173#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NormalPlayService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/NormalPlayService.java">
+      <file leaf-file-name="SettingFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/fragments/SettingFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding />
+              <caret line="400" column="47" selection-start-line="400" selection-start-column="47" selection-end-line="400" selection-end-column="47" />
+              <folding>
+                <element signature="e#18786#18841#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChunkPlayActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ChunkPlayActivity.java">
+      <file leaf-file-name="SentenceSetActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-              <folding />
+            <state vertical-scroll-proportion="-6.4827585">
+              <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#10544#10633#0" expanded="true" />
+                <element signature="e#16267#16295#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SentenceSetDetailsActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java">
+      <file leaf-file-name="PlayActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ThemeContentActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ThemeContentActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.862069">
-              <caret line="185" column="56" selection-start-line="183" selection-start-column="8" selection-end-line="185" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.33189654">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -1953,19 +1922,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_normal_play.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ThemeContentActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java" />
+        <option value="$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/widget/ProgressBar.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/fragments/SettingFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -1993,9 +1964,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
@@ -2007,6 +1977,38 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Gradle Scripts" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InstantRep" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InstantRep" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2164,9 +2166,14 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2452,17 +2459,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.030716723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.081911266" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46075085" sideWeight="0.5060698" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1109215" sideWeight="0.4939302" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2470,8 +2476,8 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2482,6 +2488,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2497,78 +2504,83 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ThemeContentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="920" column="40" selection-start-line="920" selection-start-column="40" selection-end-line="920" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="15" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="799" column="18" selection-start-line="799" selection-start-column="18" selection-end-line="799" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7153#7154#0" expanded="true" />
-            <element signature="e#7182#7183#0" expanded="true" />
-            <element signature="e#9991#10277#0" expanded="true" />
-            <element signature="e#10276#10277#0" expanded="true" />
-            <element signature="e#11884#12056#0" expanded="true" />
-            <element signature="e#12055#12056#0" expanded="true" />
-            <element signature="e#12102#12274#0" expanded="true" />
-            <element signature="e#12273#12274#0" expanded="true" />
-            <element signature="e#12316#12514#0" expanded="true" />
-            <element signature="e#12513#12514#0" expanded="true" />
-            <element signature="e#12725#12758#0" expanded="true" />
-            <element signature="e#12813#12845#0" expanded="true" />
-            <element signature="e#14493#15310#0" expanded="true" />
-            <element signature="e#15309#15310#0" expanded="true" />
-            <element signature="e#16044#16584#0" expanded="true" />
-            <element signature="e#16283#16540#0" expanded="true" />
-            <element signature="e#16539#16540#0" expanded="true" />
-            <element signature="e#16583#16584#0" expanded="true" />
-            <element signature="e#18434#22364#0" expanded="true" />
-            <element signature="e#22022#22320#0" expanded="true" />
-            <element signature="e#22319#22320#0" expanded="true" />
-            <element signature="e#22363#22364#0" expanded="true" />
-            <element signature="e#22438#23561#0" expanded="true" />
-            <element signature="e#23560#23561#0" expanded="true" />
-            <element signature="e#25047#25103#0" expanded="true" />
-            <element signature="e#25105#25163#0" expanded="true" />
-            <element signature="e#25571#25623#0" expanded="true" />
-            <element signature="e#25625#25676#0" expanded="true" />
-            <element signature="e#26647#26680#0" expanded="true" />
-            <element signature="e#26683#26715#0" expanded="true" />
-            <element signature="e#26776#26811#0" expanded="true" />
-            <element signature="e#26814#26848#0" expanded="true" />
-            <element signature="e#28963#29020#0" expanded="true" />
-            <element signature="e#29022#29081#0" expanded="true" />
-            <element signature="e#32723#32724#0" expanded="true" />
-            <element signature="e#32752#32753#0" expanded="true" />
-            <element signature="e#41229#41230#0" expanded="true" />
-            <element signature="e#41268#41269#0" expanded="true" />
-            <element signature="e#41641#41642#0" expanded="true" />
-            <element signature="e#41668#41669#0" expanded="true" />
-            <element signature="e#45139#45140#0" expanded="true" />
-            <element signature="e#45172#45173#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_normal_play.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="43" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="43" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ChunkPlayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2576,7 +2588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="121" column="68" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2586,8 +2597,6 @@
           <caret line="130" column="57" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9546#9635#0" expanded="true" />
-            <element signature="e#16315#16343#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2624,48 +2633,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7153#7154#0" expanded="true" />
-            <element signature="e#7182#7183#0" expanded="true" />
-            <element signature="e#9991#10277#0" expanded="true" />
-            <element signature="e#10276#10277#0" expanded="true" />
-            <element signature="e#11884#12056#0" expanded="true" />
-            <element signature="e#12055#12056#0" expanded="true" />
-            <element signature="e#12102#12274#0" expanded="true" />
-            <element signature="e#12273#12274#0" expanded="true" />
-            <element signature="e#12316#12514#0" expanded="true" />
-            <element signature="e#12513#12514#0" expanded="true" />
-            <element signature="e#12725#12758#0" expanded="true" />
-            <element signature="e#12813#12845#0" expanded="true" />
-            <element signature="e#14493#15310#0" expanded="true" />
-            <element signature="e#15309#15310#0" expanded="true" />
-            <element signature="e#16044#16584#0" expanded="true" />
-            <element signature="e#16283#16540#0" expanded="true" />
-            <element signature="e#16539#16540#0" expanded="true" />
-            <element signature="e#16583#16584#0" expanded="true" />
-            <element signature="e#18434#22364#0" expanded="true" />
-            <element signature="e#22022#22320#0" expanded="true" />
-            <element signature="e#22319#22320#0" expanded="true" />
-            <element signature="e#22363#22364#0" expanded="true" />
-            <element signature="e#22438#23561#0" expanded="true" />
-            <element signature="e#23560#23561#0" expanded="true" />
-            <element signature="e#25047#25103#0" expanded="true" />
-            <element signature="e#25105#25163#0" expanded="true" />
-            <element signature="e#25571#25623#0" expanded="true" />
-            <element signature="e#25625#25676#0" expanded="true" />
-            <element signature="e#26647#26680#0" expanded="true" />
-            <element signature="e#26683#26715#0" expanded="true" />
-            <element signature="e#26776#26811#0" expanded="true" />
-            <element signature="e#26814#26848#0" expanded="true" />
-            <element signature="e#28963#29020#0" expanded="true" />
-            <element signature="e#29022#29081#0" expanded="true" />
-            <element signature="e#32723#32724#0" expanded="true" />
-            <element signature="e#32752#32753#0" expanded="true" />
-            <element signature="e#41229#41230#0" expanded="true" />
-            <element signature="e#41268#41269#0" expanded="true" />
-            <element signature="e#41641#41642#0" expanded="true" />
-            <element signature="e#41668#41669#0" expanded="true" />
-            <element signature="e#45139#45140#0" expanded="true" />
-            <element signature="e#45172#45173#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2674,7 +2641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="121" column="68" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2684,8 +2650,6 @@
           <caret line="130" column="57" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9546#9635#0" expanded="true" />
-            <element signature="e#16315#16343#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2722,48 +2686,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7153#7154#0" expanded="true" />
-            <element signature="e#7182#7183#0" expanded="true" />
-            <element signature="e#9991#10277#0" expanded="true" />
-            <element signature="e#10276#10277#0" expanded="true" />
-            <element signature="e#11884#12056#0" expanded="true" />
-            <element signature="e#12055#12056#0" expanded="true" />
-            <element signature="e#12102#12274#0" expanded="true" />
-            <element signature="e#12273#12274#0" expanded="true" />
-            <element signature="e#12316#12514#0" expanded="true" />
-            <element signature="e#12513#12514#0" expanded="true" />
-            <element signature="e#12725#12758#0" expanded="true" />
-            <element signature="e#12813#12845#0" expanded="true" />
-            <element signature="e#14493#15310#0" expanded="true" />
-            <element signature="e#15309#15310#0" expanded="true" />
-            <element signature="e#16044#16584#0" expanded="true" />
-            <element signature="e#16283#16540#0" expanded="true" />
-            <element signature="e#16539#16540#0" expanded="true" />
-            <element signature="e#16583#16584#0" expanded="true" />
-            <element signature="e#18434#22364#0" expanded="true" />
-            <element signature="e#22022#22320#0" expanded="true" />
-            <element signature="e#22319#22320#0" expanded="true" />
-            <element signature="e#22363#22364#0" expanded="true" />
-            <element signature="e#22438#23561#0" expanded="true" />
-            <element signature="e#23560#23561#0" expanded="true" />
-            <element signature="e#25047#25103#0" expanded="true" />
-            <element signature="e#25105#25163#0" expanded="true" />
-            <element signature="e#25571#25623#0" expanded="true" />
-            <element signature="e#25625#25676#0" expanded="true" />
-            <element signature="e#26647#26680#0" expanded="true" />
-            <element signature="e#26683#26715#0" expanded="true" />
-            <element signature="e#26776#26811#0" expanded="true" />
-            <element signature="e#26814#26848#0" expanded="true" />
-            <element signature="e#28963#29020#0" expanded="true" />
-            <element signature="e#29022#29081#0" expanded="true" />
-            <element signature="e#32723#32724#0" expanded="true" />
-            <element signature="e#32752#32753#0" expanded="true" />
-            <element signature="e#41229#41230#0" expanded="true" />
-            <element signature="e#41268#41269#0" expanded="true" />
-            <element signature="e#41641#41642#0" expanded="true" />
-            <element signature="e#41668#41669#0" expanded="true" />
-            <element signature="e#45139#45140#0" expanded="true" />
-            <element signature="e#45172#45173#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2772,7 +2694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="121" column="68" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2782,8 +2703,6 @@
           <caret line="236" column="64" selection-start-line="236" selection-start-column="64" selection-end-line="236" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9546#9635#0" expanded="true" />
-            <element signature="e#16315#16343#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2810,14 +2729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="197" column="56" selection-start-line="197" selection-start-column="56" selection-end-line="197" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/utility/Default.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33150685">
-          <caret line="76" column="31" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -2849,74 +2760,90 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.033333335">
           <caret line="121" column="68" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_normal_play.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03736264">
           <caret line="29" column="43" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="43" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06666667">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/set_list_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.7692308">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/NormalPlayService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/content/ServiceConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ChunkPlayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-4.4333334">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26666668">
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/InAppBillingSupporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="94" column="19" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/utility/Default.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="51" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/ThemeContentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.862069">
-          <caret line="185" column="56" selection-start-line="183" selection-start-column="8" selection-end-line="185" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="920" column="40" selection-start-line="920" selection-start-column="40" selection-end-line="920" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/android/widget/ProgressBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7068607">
-          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1341" column="42" selection-start-line="1341" selection-start-column="42" selection-end-line="1341" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9546#9635#0" expanded="true" />
-            <element signature="e#16315#16343#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.06666667">
-          <caret line="143" column="55" selection-start-line="143" selection-start-column="55" selection-end-line="143" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#50700#50701#0" expanded="false" />
+            <element signature="e#50744#50745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2924,68 +2851,48 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetDetailsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="76" selection-start-line="112" selection-start-column="76" selection-end-line="112" selection-end-column="76" />
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/NormalPlayService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/fragments/SettingFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
+          <caret line="400" column="47" selection-start-line="400" selection-start-column="47" selection-end-line="400" selection-end-column="47" />
+          <folding>
+            <element signature="e#18786#18841#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceSetActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.4827585">
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10544#10633#0" expanded="true" />
+            <element signature="e#16267#16295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/SentenceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jp/co/efusion/aninstantreply/PlayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7068608">
-          <caret line="836" column="0" selection-start-line="836" selection-start-column="0" selection-end-line="836" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7153#7154#0" expanded="true" />
-            <element signature="e#7182#7183#0" expanded="true" />
-            <element signature="e#9991#10277#0" expanded="true" />
-            <element signature="e#10276#10277#0" expanded="true" />
-            <element signature="e#11884#12056#0" expanded="true" />
-            <element signature="e#12055#12056#0" expanded="true" />
-            <element signature="e#12102#12274#0" expanded="true" />
-            <element signature="e#12273#12274#0" expanded="true" />
-            <element signature="e#12316#12514#0" expanded="true" />
-            <element signature="e#12513#12514#0" expanded="true" />
-            <element signature="e#12725#12758#0" expanded="true" />
-            <element signature="e#12813#12845#0" expanded="true" />
-            <element signature="e#14493#15310#0" expanded="true" />
-            <element signature="e#15309#15310#0" expanded="true" />
-            <element signature="e#16044#16584#0" expanded="true" />
-            <element signature="e#16283#16540#0" expanded="true" />
-            <element signature="e#16539#16540#0" expanded="true" />
-            <element signature="e#16583#16584#0" expanded="true" />
-            <element signature="e#18434#22364#0" expanded="true" />
-            <element signature="e#22022#22320#0" expanded="true" />
-            <element signature="e#22319#22320#0" expanded="true" />
-            <element signature="e#22363#22364#0" expanded="true" />
-            <element signature="e#22438#23561#0" expanded="true" />
-            <element signature="e#23560#23561#0" expanded="true" />
-            <element signature="e#25047#25103#0" expanded="true" />
-            <element signature="e#25105#25163#0" expanded="true" />
-            <element signature="e#25571#25623#0" expanded="true" />
-            <element signature="e#25625#25676#0" expanded="true" />
-            <element signature="e#26647#26680#0" expanded="true" />
-            <element signature="e#26683#26715#0" expanded="true" />
-            <element signature="e#26776#26811#0" expanded="true" />
-            <element signature="e#26814#26848#0" expanded="true" />
-            <element signature="e#28963#29020#0" expanded="true" />
-            <element signature="e#29022#29081#0" expanded="true" />
-            <element signature="e#32723#32724#0" expanded="true" />
-            <element signature="e#32752#32753#0" expanded="true" />
-            <element signature="e#41229#41230#0" expanded="true" />
-            <element signature="e#41268#41269#0" expanded="true" />
-            <element signature="e#41641#41642#0" expanded="true" />
-            <element signature="e#41668#41669#0" expanded="true" />
-            <element signature="e#45139#45140#0" expanded="true" />
-            <element signature="e#45172#45173#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.33189654">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

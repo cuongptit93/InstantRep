@@ -172,11 +172,11 @@ public class SentenceSetDetailsActivity extends ActionBarActivity implements Act
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                //Open setting fragment
                 finish();
                 return true;
 
             case R.id.action_option:
+                //Open setting fragment
                 showActionSheet();
                 return true;
 

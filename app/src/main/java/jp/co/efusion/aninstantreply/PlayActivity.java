@@ -161,12 +161,12 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         updateLearningTime(Default.RESUME_STATE);
         //check for first time or not
 
-        /*if (!FIRSTTIME_RESUME) {
+        if (!FIRSTTIME_RESUME) {
             bindDataFromService();
         }
         else{
             FIRSTTIME_RESUME = true;
-        }*/
+        }
 
         //When open Setting: checkSetting = true. onResume = callback Actitivy
         if(checkSetting){
@@ -294,6 +294,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 currentPage = position;
                 sentenceSetIDCallBack = sentenceSetId;
                 contentIDCallBack = SentenceUtils.getContenID(databaseHelper, sentenceSetId);
+                //Toast.makeText(getApplicationContext(), String.valueOf(FREE_SET), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -531,11 +532,17 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                         return;
                     }
                 } else if (startPoint >= sentenceList.size()) {
+                    if(FREE_SET){
+                        purchaseIndicator = purchaseIndicator -1;
+                        FREE_SET = false;
+                    }
                     if (isAutoNextSentences(sharedPreferences, contentID)) {
                         purchaseIndicator++;
 
                         if(purchaseIndicator > purchaseList.size() -1){
+                            startPoint = startPoint -1;
                             sentenceLimitAlert();
+                            return;
                         }
                         else {
                             if (!getNextSentences(databaseHelper, purchaseIndicator, false)) {
@@ -791,6 +798,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 sharedPreferences.edit().putInt("sentenceSetIDCallBack", sentenceSetIDCallBack).commit();
                 sharedPreferences.edit().putString("titleCallBack", titleCallBack).commit();
                 sharedPreferences.edit().putInt("contentIDCallBack", contentIDCallBack).commit();
+                sharedPreferences.edit().putString("checkFreeSet", String.valueOf(FREE_SET)).commit();
                 finish();
             }
         });
@@ -895,6 +903,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             AUDIO_CURRENT_POSITION = mediaPlayerManager.pauseAudio();
 
         }
+
         //stop repeat player if exist
         if (repeatPlayerManager != null) {
             if (repeatPlayerManager.isPlaying()) {

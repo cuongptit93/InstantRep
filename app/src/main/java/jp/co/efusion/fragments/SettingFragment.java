@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -23,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,13 +51,14 @@ public class SettingFragment extends Fragment {
 
     //position list SettingApp
     private int checkPositionSetting = 0, chunkplayTiemrPosition, chunkplayIntervalPosition, autoplayIntervalPosition,
-            audioSpeedPostion, clearSettingPosition, audioVolumePosition;
+            audioSpeedPostion, clearSettingPosition, audioVolumePosition, maxVolume, currentVolume;
 
     SharedPreferences sharedPreferences;
 
     //view declaration
     private ListView settingsListview;
     private SettingsAdapter settingsAdapter;
+    private AudioManager audioManager = null;
 
     private CustomIOSDialog customIOSDialog;
 
@@ -289,7 +292,7 @@ public class SettingFragment extends Fragment {
 
         @Override
         public View getView(final int position, View view, ViewGroup arg2) {
-            ViewHolder vh;
+            final ViewHolder vh;
             final float scale = getResources().getDisplayMetrics().density;
             if (view == null) {
                 vh = new ViewHolder();
@@ -397,9 +400,41 @@ public class SettingFragment extends Fragment {
                 if (arraySetting[checkPositionSetting].equals(getString(R.string.audio_volumn_setting))) {
                     vh.settingsTitleTextView.setText(getResources().getString(R.string.audio_volumn_setting));
                     vh.settingsValueTextView.setVisibility(View.VISIBLE);
-                    vh.settingsValueTextView.setText("50");
                     vh.navigationImageView.setVisibility(View.INVISIBLE);
                     vh.seekBar.setVisibility(View.VISIBLE);
+
+                    audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+                    currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                    maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+                    vh.seekBar.setMax(maxVolume);
+
+                    if(currentVolume == maxVolume){
+                        vh.settingsValueTextView.setText(String.valueOf(maxVolume));
+                        vh.seekBar.setProgress(maxVolume);
+                    }
+                    else{
+                        vh.settingsValueTextView.setText(String.valueOf(currentVolume));
+                        vh.seekBar.setProgress(currentVolume);
+                    }
+
+                    vh.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                        @Override
+                        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
+                                    progress, 0);
+                            vh.settingsValueTextView.setText(String.valueOf(progress));
+                        }
+
+                        @Override
+                        public void onStartTrackingTouch(SeekBar seekBar) {
+
+                        }
+
+                        @Override
+                        public void onStopTrackingTouch(SeekBar seekBar) {
+
+                        }
+                    });
                     audioVolumePosition = position;
                 }
 

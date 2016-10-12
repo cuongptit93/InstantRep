@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 import com.google.android.gms.ads.AdRequest;
@@ -108,8 +109,8 @@ public class SentenceSetActivity extends ActionBarActivity  implements ActionShe
         //initialize view
         sentenceSetListView = (ListView) findViewById(R.id.sentenceSetListView);
 
-        //load sentence set data
         loadSentenceSetData();
+
 
         //configure the adView Here
         adView = (AdView) findViewById(R.id.adView);
@@ -140,6 +141,29 @@ public class SentenceSetActivity extends ActionBarActivity  implements ActionShe
                     }
                 });
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(contentID!=-1){
+            //get sentenceSetID and Title to PlayActivity (CallBack)
+            if(sharedPreferences.getInt("contentIDCallBack", Default.ZERO)!=0){
+                contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
+
+                //clear sharedPreferences to Activity Play
+                sharedPreferences.edit().remove("contentIDCallBack").commit();
+                sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
+                sharedPreferences.edit().remove("titleCallBack").commit();
+                sharedPreferences.edit().remove("checkFreeSet").commit();
+            }
+        }
+        else{
+            //clear sharedPreferences to Activity Play
+            sharedPreferences.edit().remove("contentIDCallBack").commit();
+            sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
+            sharedPreferences.edit().remove("titleCallBack").commit();
+        }
     }
 
     @Override
@@ -212,7 +236,6 @@ public class SentenceSetActivity extends ActionBarActivity  implements ActionShe
                     }
                 });
 
-                //check for free set
                 if (getIntent().getBooleanExtra(Default.FREE_SET, false)) {
                     //navigate to Set Details Activity
                     cursor.moveToFirst();
@@ -307,30 +330,6 @@ public class SentenceSetActivity extends ActionBarActivity  implements ActionShe
             startActivityForResult(intent, Default.HIDDENABLE_REQUEST_CODE);
         } else {
             startActivity(intent);
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if(contentID!=-1){
-            //get sentenceSetID and Title to PlayActivity (CallBack)
-            if(sharedPreferences.getInt("contentIDCallBack", Default.ZERO)!=0){
-                contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
-                //reload sentence set data
-                loadSentenceSetData();
-
-                //clear sharedPreferences to Activity Play
-                sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
-                sharedPreferences.edit().remove("contentIDCallBack").commit();
-                sharedPreferences.edit().remove("titleCallBack").commit();
-            }
-        }
-        else{
-            //clear sharedPreferences to Activity Play
-            sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
-            sharedPreferences.edit().remove("contentIDCallBack").commit();
-            sharedPreferences.edit().remove("titleCallBack").commit();
         }
     }
 

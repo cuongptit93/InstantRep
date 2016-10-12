@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 import com.google.android.gms.ads.AdRequest;
@@ -71,7 +72,6 @@ public class SentenceActivity extends ActionBarActivity implements ActionSheet.A
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.theme_color_green)));
         setContentView(R.layout.activity_sentence);
 
-
         uiHandler = new Handler(getMainLooper());
 
         //show home back button
@@ -113,8 +113,7 @@ public class SentenceActivity extends ActionBarActivity implements ActionSheet.A
         //initialize uiview
         sentenceListView = (ListView) findViewById(R.id.sentenceListView);
 
-//        //load sentence data
-//        loadSentenceData();
+
         //configure the adView Here
         adView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
@@ -138,15 +137,25 @@ public class SentenceActivity extends ActionBarActivity implements ActionSheet.A
     public void onStart() {
         super.onStart();
 
+        //Toast.makeText(getApplicationContext(), String.valueOf(sharedPreferences.getString("checkFreeSet", "")), Toast.LENGTH_LONG).show();
         //get sentenceSetID and Title to PlayActivity (CallBack)
-        if(sharedPreferences.getInt("sentenceSetIDCallBack", Default.ZERO)!=0){
-            sentenceSetID = sharedPreferences.getInt("sentenceSetIDCallBack", Default.ZERO);
-            contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
-            setTitle = sharedPreferences.getString("titleCallBack", "");
+        if(sharedPreferences.getString("checkFreeSet", "").equals("false")){
+            FREE_SET = false;
+            free_Set = "false";
         }
 
+        if(!FREE_SET){
+            if(sharedPreferences.getInt("sentenceSetIDCallBack", Default.ZERO)!=0){
+                sentenceSetID = sharedPreferences.getInt("sentenceSetIDCallBack", Default.ZERO);
+                contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
+                setTitle = sharedPreferences.getString("titleCallBack", "");
+            }
+        }
+
+        //Toast.makeText(getApplicationContext(), String.valueOf(free_Set), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), String.valueOf(contentID), Toast.LENGTH_LONG).show();
+
         getSupportActionBar().setTitle(setTitle);
-        loadSentenceData();
 
         //load last played
         Cursor cr = databaseHelper.getQueryResultData(SentenceSetTable.TABLE_NAME,
@@ -182,6 +191,8 @@ public class SentenceActivity extends ActionBarActivity implements ActionSheet.A
             list.remove(0);
             actionSheetItems = list.toArray(new String[0]);
         }
+
+        loadSentenceData();
 
     }
 
