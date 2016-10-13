@@ -22,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 
@@ -72,7 +71,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     volatile int purchaseIndicator;
     int sentenceSetId, contentID, sentenceSetAuto;
     String themeId, setTitle, titleCallBack;
-    boolean isShuffled, checkSetting = false;
+    boolean isShuffled, checkSetting = false, checkPause = false;
     String free_Set, theme_no;
     //flag for identify favorite data set
     Boolean IS_FAVORITE_SET = false, FREE_SET;
@@ -152,12 +151,30 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     protected void onStart() {
         titleCallBack = setTitle;
         super.onStart();
+
+        //check pause Activity
+        if(checkPause){
+            if (sharedPreferences.getBoolean(Default.AUTO_PLAY_ENABLE, Default.AUTO_PLAY_ENABLE_DEFAULT)) {
+                AUTO_PLAY_ON = true;
+            }
+            else {
+                AUTO_PLAY_ON = false;
+            }
+            IS_TIMER_RUNNING = true;
+            resumeMediaPlay();
+            configureAutoPlayView();
+            updateProgressBarVisibility();
+            checkPause =false;
+        }
+        else{
+            checkPause = false;
+        }
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
         updateLearningTime(Default.RESUME_STATE);
         //check for first time or not
 
@@ -168,28 +185,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             FIRSTTIME_RESUME = true;
         }
 
-        //When open Setting: checkSetting = true. onResume = callback Actitivy
-        if(checkSetting){
-            if (sharedPreferences.getBoolean(Default.AUTO_PLAY_ENABLE, Default.AUTO_PLAY_ENABLE_DEFAULT)) {
-                AUTO_PLAY_ON = true;
-                configureAutoPlayView();
-                updateProgressBarVisibility();
-                IS_TIMER_RUNNING = true;
-                resumeMediaPlay();
-            }
-            else {
-                AUTO_PLAY_ON = false;
-                updateProgressBarVisibility();
-                configureAutoPlayView();
-                IS_TIMER_RUNNING = true;
-                resumeMediaPlay();
-            }
-            //configureAutoPlayView();
-            checkSetting =false;
-        }
-        else{
-            checkSetting = false;
-        }
     }
 
     @Override
@@ -218,12 +213,18 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         //update last sentence list
         CacheLastSentence.updatePlaySentence(this, sentenceList, startPoint, sentenceSetId, setTitle);
 
-        if (mediaPlayerManager != null)
-            mediaPlayerManager.stopAudio();
-        if (repeatPlayerManager != null)
-            repeatPlayerManager.stopAudio();
-
         super.onStop();
+
+        if(checkSetting){
+            checkPause = true;
+            checkSetting = false;
+        }
+        else{
+            if (mediaPlayerManager != null)
+                mediaPlayerManager.stopAudio();
+            if (repeatPlayerManager != null)
+                repeatPlayerManager.stopAudio();
+        }
 
     }
 
@@ -260,6 +261,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     }
 
     private void initMainView() {
+
         //initialize UI
         titleTextView = (TextView) findViewById(R.id.titleTextView);
 
@@ -294,7 +296,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 currentPage = position;
                 sentenceSetIDCallBack = sentenceSetId;
                 contentIDCallBack = SentenceUtils.getContenID(databaseHelper, sentenceSetId);
-                //Toast.makeText(getApplicationContext(), String.valueOf(FREE_SET), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -367,16 +368,16 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     }
 
     /*
-   *Configure auto play view
-    */
-    private void configureAutoPlayView() {
-        autoPLayButton.setVisibility(View.VISIBLE);
-        if (AUTO_PLAY_ON) {
-            autoPLayButton.setText(R.string.auto_play_off_state_text);
-        } else {
-            autoPLayButton.setText(R.string.auto_play_on_state_text);
+        *Configure auto play view
+        */
+        private void configureAutoPlayView() {
+            autoPLayButton.setVisibility(View.VISIBLE);
+            if (AUTO_PLAY_ON) {
+                autoPLayButton.setText(R.string.auto_play_off_state_text);
+            } else {
+                autoPLayButton.setText(R.string.auto_play_on_state_text);
+            }
         }
-    }
 
     protected void getIntentData(int playMode, DatabaseHelper databaseHelper, SharedPreferences sharedPreferences) {
         uiHandler = new Handler(getMainLooper());
@@ -425,20 +426,24 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         }
     }
 
-    //Resume MediaPlay when open Setting.
+    //Resume MediaPlay when open Setting, back backPressed.
     private void resumeMediaPlay(){
         //update flag
         IS_ALERT_SHOWING = false;
+
         //resume audio
         if (mediaPlayerManager != null && AUDIO_CURRENT_POSITION != Default.ZERO) {
             mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
         }
-        //check timer && start timer
-        if (IS_TIMER_RUNNING) {
-            onMediaCompletion();
-            IS_TIMER_RUNNING = false;
-            TIMER_REMAINING_TIME = Default.ZERO;
+        else{
+            //check timer && start timer
+            if (IS_TIMER_RUNNING) {
+                onMediaCompletion();
+                IS_TIMER_RUNNING = false;
+                TIMER_REMAINING_TIME = Default.ZERO;
+            }
         }
+
     }
 
     protected void setSentencesSetTitle(final DatabaseHelper databaseHelper,
@@ -496,6 +501,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     }
 
     protected void onLoadNewSentence(Boolean animated, int originAnimation) {
+
     }
 
     /**
@@ -777,18 +783,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         customIOSDialog.setIOSDialogListener(new IOSDialogListener() {
             @Override
             public void onCancel() {
-                //update flag
-                IS_ALERT_SHOWING = false;
-                //resume audio
-                if (mediaPlayerManager != null && AUDIO_CURRENT_POSITION != Default.ZERO) {
-                    mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
-                }
-                //check timer && start timer
-                if (IS_TIMER_RUNNING) {
-                    onMediaCompletion();
-                    IS_TIMER_RUNNING = false;
-                    TIMER_REMAINING_TIME = Default.ZERO;
-                }
+                resumeMediaPlay();
             }
 
             @Override
@@ -829,7 +824,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
 
             if (databaseHelper.insertSQL(FavoriteTable.TABLE_NAME, null, values)) {
                 imageButton.setBackgroundResource(R.drawable.favorite_on);
-                //Toast.makeText(getApplicationContext(), getResources().getString(R.string.favorite_add_msg), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -903,7 +897,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             AUDIO_CURRENT_POSITION = mediaPlayerManager.pauseAudio();
 
         }
-
         //stop repeat player if exist
         if (repeatPlayerManager != null) {
             if (repeatPlayerManager.isPlaying()) {
@@ -917,6 +910,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             autoPlayTimer.cancel();
             autoPlayTimer = null;
         }
+
         showActionSheet();
     }
 
@@ -1206,7 +1200,21 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
 
     @Override
     public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-        resumeMediaPlay();
+        if(isCancel){
+            //update flag
+            IS_ALERT_SHOWING = false;
+
+            //resume audio
+            if (mediaPlayerManager != null && AUDIO_CURRENT_POSITION != Default.ZERO) {
+                mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
+            }
+            //check timer && start timer
+            if (IS_TIMER_RUNNING) {
+                onMediaCompletion();
+                IS_TIMER_RUNNING = false;
+                TIMER_REMAINING_TIME = Default.ZERO;
+            }
+        }
     }
 
     @Override
@@ -1222,8 +1230,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 Intent i = new Intent(PlayActivity.this, HomeActivity.class);
                 i.putExtra("check", true);
                 checkSetting = true;
-                IS_TIMER_RUNNING = false;
-                clear();
                 startActivity(i);
                 break;
             default:
