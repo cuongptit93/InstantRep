@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 import com.google.android.gms.ads.AdRequest;
@@ -140,7 +139,6 @@ public class SentenceSetActivity extends ActionBarActivity  implements ActionShe
                         navigateToDetails(cursor, false);
                     }
                 });
-
     }
 
     @Override
@@ -163,6 +161,7 @@ public class SentenceSetActivity extends ActionBarActivity  implements ActionShe
             sharedPreferences.edit().remove("contentIDCallBack").commit();
             sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
             sharedPreferences.edit().remove("titleCallBack").commit();
+            sharedPreferences.edit().remove("checkFreeSet").commit();
         }
     }
 

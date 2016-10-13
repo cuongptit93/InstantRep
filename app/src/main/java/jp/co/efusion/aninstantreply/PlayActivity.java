@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 
@@ -153,20 +154,18 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         super.onStart();
 
         //check pause Activity
-        if(checkPause){
+        if (checkPause) {
             if (sharedPreferences.getBoolean(Default.AUTO_PLAY_ENABLE, Default.AUTO_PLAY_ENABLE_DEFAULT)) {
                 AUTO_PLAY_ON = true;
-            }
-            else {
+            } else {
                 AUTO_PLAY_ON = false;
             }
             IS_TIMER_RUNNING = true;
             resumeMediaPlay();
             configureAutoPlayView();
             updateProgressBarVisibility();
-            checkPause =false;
-        }
-        else{
+            checkPause = false;
+        } else {
             checkPause = false;
         }
 
@@ -180,8 +179,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
 
         if (!FIRSTTIME_RESUME) {
             bindDataFromService();
-        }
-        else{
+        } else {
             FIRSTTIME_RESUME = true;
         }
 
@@ -215,11 +213,10 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
 
         super.onStop();
 
-        if(checkSetting){
+        if (checkSetting) {
             checkPause = true;
             checkSetting = false;
-        }
-        else{
+        } else {
             if (mediaPlayerManager != null)
                 mediaPlayerManager.stopAudio();
             if (repeatPlayerManager != null)
@@ -370,14 +367,14 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     /*
         *Configure auto play view
         */
-        private void configureAutoPlayView() {
-            autoPLayButton.setVisibility(View.VISIBLE);
-            if (AUTO_PLAY_ON) {
-                autoPLayButton.setText(R.string.auto_play_off_state_text);
-            } else {
-                autoPLayButton.setText(R.string.auto_play_on_state_text);
-            }
+    private void configureAutoPlayView() {
+        autoPLayButton.setVisibility(View.VISIBLE);
+        if (AUTO_PLAY_ON) {
+            autoPLayButton.setText(R.string.auto_play_off_state_text);
+        } else {
+            autoPLayButton.setText(R.string.auto_play_on_state_text);
         }
+    }
 
     protected void getIntentData(int playMode, DatabaseHelper databaseHelper, SharedPreferences sharedPreferences) {
         uiHandler = new Handler(getMainLooper());
@@ -427,15 +424,14 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     }
 
     //Resume MediaPlay when open Setting, back backPressed.
-    private void resumeMediaPlay(){
+    private void resumeMediaPlay() {
         //update flag
         IS_ALERT_SHOWING = false;
 
         //resume audio
         if (mediaPlayerManager != null && AUDIO_CURRENT_POSITION != Default.ZERO) {
             mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
-        }
-        else{
+        } else {
             //check timer && start timer
             if (IS_TIMER_RUNNING) {
                 onMediaCompletion();
@@ -517,12 +513,11 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 //check start point value limit
                 if (startPoint < 0) {
                     if (isAutoNextSentences(sharedPreferences, contentID)) {
-                        if(purchaseIndicator == 0){
+                        if (purchaseIndicator == 0) {
                             sentenceLimitAlert();
                             startPoint = 0;
                             return;
-                        }
-                        else{
+                        } else {
                             purchaseIndicator--;
                             if (!getNextSentences(databaseHelper, purchaseIndicator, true)) {
                                 purchaseIndicator++;
@@ -538,19 +533,18 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                         return;
                     }
                 } else if (startPoint >= sentenceList.size()) {
-                    if(FREE_SET){
-                        purchaseIndicator = purchaseIndicator -1;
+                    if (FREE_SET) {
+                        purchaseIndicator = purchaseIndicator - 1;
                         FREE_SET = false;
                     }
                     if (isAutoNextSentences(sharedPreferences, contentID)) {
                         purchaseIndicator++;
 
-                        if(purchaseIndicator > purchaseList.size() -1){
-                            startPoint = startPoint -1;
+                        if (purchaseIndicator > purchaseList.size() - 1) {
+                            startPoint = startPoint - 1;
                             sentenceLimitAlert();
                             return;
-                        }
-                        else {
+                        } else {
                             if (!getNextSentences(databaseHelper, purchaseIndicator, false)) {
                                 purchaseIndicator--;
                                 startPoint = sentenceList.size() - 1;
@@ -888,7 +882,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     }
 
     /*Show Action Sheet Button onClick*/
-    public void showActionSheetPressed(View view){
+    public void showActionSheetPressed(View view) {
         //update flag
         IS_ALERT_SHOWING = true;
         //UPDATE FLAG
@@ -1200,7 +1194,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
 
     @Override
     public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-        if(isCancel){
+        if (isCancel) {
             //update flag
             IS_ALERT_SHOWING = false;
 
