@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 import com.google.android.gms.ads.AdRequest;
@@ -147,8 +148,10 @@ public class SentenceSetActivity extends ActionBarActivity  implements ActionShe
         if(contentID!=-1){
             //get sentenceSetID and Title to PlayActivity (CallBack)
             if(sharedPreferences.getInt("contentIDCallBack", Default.ZERO)!=0){
-                contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
-
+                if(contentID!=1){
+                    contentID = sharedPreferences.getInt("contentIDCallBack", Default.ZERO);
+                    loadSentenceSetData();
+                }
                 //clear sharedPreferences to Activity Play
                 sharedPreferences.edit().remove("contentIDCallBack").commit();
                 sharedPreferences.edit().remove("sentenceSetIDCallBack").commit();
