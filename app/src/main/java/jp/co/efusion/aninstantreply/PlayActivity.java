@@ -183,6 +183,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             FIRSTTIME_RESUME = true;
         }
 
+
     }
 
     @Override
@@ -431,6 +432,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         //resume audio
         if (mediaPlayerManager != null && AUDIO_CURRENT_POSITION != Default.ZERO) {
             mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
+            onMediaCompletion();
         } else {
             //check timer && start timer
             if (IS_TIMER_RUNNING) {

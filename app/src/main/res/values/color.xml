@@ -12,6 +12,7 @@
 
 
     <color name="learning_objective_back_color">#ff7c9c18</color>
+    <color name="target">#ff7c9c59</color>
     <color name="statistics_back_color">#ff708d17</color>
     <color name="fragment_back_color">#ffebebf1</color>
 

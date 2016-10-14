@@ -1,13 +1,16 @@
 package jp.co.efusion.fragments;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +20,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +31,7 @@ import com.google.android.gms.ads.AdView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -42,7 +48,10 @@ public class ThemeFragment extends Fragment {
 
     DatabaseHelper databaseHelper;
     Cursor cursor;
-    private TextView learningObjectiveTextView,learningDayTextview,learningHourTextView,questionTriedTextView;
+    private TextView learningObjectiveTextView,learningDayTextview,learningHourTextView,
+            questionTriedTextView, defaultContentTextview, timerTargetTextView,
+            dayChooseTextView, dayEndTextView ;
+
     private ListView themeListView;
     AdView adView;
 
@@ -50,6 +59,13 @@ public class ThemeFragment extends Fragment {
     private ArrayList<ThemeItem> themeItems;
 
     SharedPreferences sharedPreferences;
+
+    final CharSequence[] itemsChooseSelect = {"Day Choose", "Default"};
+
+    private DatePicker mDatePicker;
+    private Calendar mCalendar;
+    private int mYear, mMonth, mDay;
+    DatePickerDialog datePickerDialog;
 
     public ThemeFragment() {
         // Required empty public constructor
@@ -80,6 +96,12 @@ public class ThemeFragment extends Fragment {
         learningDayTextview=(TextView)rootView.findViewById(R.id.learningDayTextview);
         learningHourTextView=(TextView)rootView.findViewById(R.id.learningHourTextView);
         questionTriedTextView=(TextView)rootView.findViewById(R.id.questionTriedTextView);
+
+        defaultContentTextview = (TextView) rootView.findViewById(R.id.txtDefaultContent);
+        timerTargetTextView = (TextView) rootView.findViewById(R.id.txtTimerTarget);
+        dayChooseTextView = (TextView) rootView.findViewById(R.id.txtDayChoose);
+        dayEndTextView = (TextView) rootView.findViewById(R.id.txtDayEnd);
+
 
         themeListView=(ListView)rootView.findViewById(R.id.themeListView);
 
@@ -122,12 +144,36 @@ public class ThemeFragment extends Fragment {
                 Intent intent=new Intent(getActivity(), ThemeContentActivity.class);
                 intent.putExtra(ThemeTable.THEME_ID,cursor.getString(cursor.getColumnIndex(ThemeTable.THEME_ID)));
                 intent.putExtra(ThemeTable.THEME_TITLE,cursor.getString(cursor.getColumnIndex(ThemeTable.THEME_TITLE)));
-
                 Log.e("Theme ID",cursor.getString(cursor.getColumnIndex(ThemeTable.THEME_ID)));
                 startActivity(intent);
 
             }
         });
+
+        defaultContentTextview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!sharedPreferences.getBoolean(Default.DEFAULT_COUNTDOWN_KEY, Default.DEFAULT_TEXT_COUNTDOWN)){
+                    sharedPreferences.edit().putString(Default.TARGET_CONTENT, getResources().getString(R.string.target)).commit();
+                    sharedPreferences.edit().putBoolean(Default.DEFAULT_COUNTDOWN_KEY, true).commit();
+                    defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
+                    timerTargetTextView.setVisibility(View.VISIBLE);
+                    dayChooseTextView.setVisibility(View.VISIBLE);
+                    dayEndTextView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    showDialogCountDown();
+                }
+            }
+        });
+
+        dayChooseTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogSelectItem();
+            }
+        });
+
         Log.e("Fragment", "Created View");
 
         return rootView;
@@ -139,10 +185,30 @@ public class ThemeFragment extends Fragment {
 
         super.onStart();
 
+        ///////get date CountDown ///////////
+        mCalendar = Calendar.getInstance();
+        mYear = mCalendar.get(Calendar.YEAR);
+        mMonth = mCalendar.get(Calendar.MONTH);
+        mDay = mCalendar.get(Calendar.DAY_OF_MONTH);
+        if(!sharedPreferences.getBoolean(Default.DEFAULT_COUNTDOWN_KEY, Default.DEFAULT_TEXT_COUNTDOWN)){
+            timerTargetTextView.setVisibility(View.INVISIBLE);
+            dayChooseTextView.setVisibility(View.INVISIBLE);
+            dayEndTextView.setVisibility(View.INVISIBLE);
+        }
+        else {
+            timerTargetTextView.setVisibility(View.VISIBLE);
+            dayChooseTextView.setVisibility(View.VISIBLE);
+            dayEndTextView.setVisibility(View.VISIBLE);
+        }
+        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
+        dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_DAY_END, getResources().getString(R.string.dayChoose)));
+
         //add dynamic function here
         Log.e("Fragment", "Start ");
         //load save data
         learningObjectiveTextView.setText(sharedPreferences.getString(Default.LEARNING_OBJECTIVE_KEY, getResources().getString(R.string.learning_objective_default_text)));
+
+
         //check value set or not
         if (sharedPreferences.getLong(Default.LEARNING_INITIAL_DATE_KEY,Default.STATISTICS_DEFAULT_VALUE)!=Default.STATISTICS_DEFAULT_VALUE){
 
@@ -158,6 +224,7 @@ public class ThemeFragment extends Fragment {
             }
 
         //    learningDayTextview.setText(String.format());
+
 
             learningDayTextview.setText(String.format("%d", daycount));
 
@@ -218,6 +285,8 @@ public class ThemeFragment extends Fragment {
         dialog.getWindow().setAttributes(lp);
 
         final EditText dialogEditText=(EditText)dialog.findViewById(R.id.dialogEditText);
+        /*final TextView dialogTitle = (TextView) dialog.findViewById(R.id.txtDialogTitle);
+        final TextView dialogQuestion = (TextView) dialog.findViewById(R.id.txtDialogTitle);*/
         //dialog click event
         Button dialogOkButton=(Button)dialog.findViewById(R.id.dialogOkButton);
         dialogOkButton.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +310,102 @@ public class ThemeFragment extends Fragment {
 
     }
 
-    /*
+    //showDialog countDown
+
+    private void showDialogCountDown(){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.objective_dialog_layout);
+        WindowManager.LayoutParams lp = new        WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int screenWidth = (int) (metrics.widthPixels * 0.80);
+        lp.width = screenWidth;//WindowManager.LayoutParams.MATCH_PARENT;
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
+        final EditText dialogEditText=(EditText)dialog.findViewById(R.id.dialogEditText);
+        final TextView dialogQuestion = (TextView) dialog.findViewById(R.id.txtDialogQuestion);
+        dialogQuestion.setText(R.string.questionTarget);
+
+        //dialog click event
+        Button dialogOkButton=(Button)dialog.findViewById(R.id.dialogOkButton);
+        dialogOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                //save the input value
+                if (dialogEditText.getText().length() > 0) {
+                    sharedPreferences.edit().putString(Default.TARGET_CONTENT, dialogEditText.getText().toString()).commit();
+                    defaultContentTextview.setText(dialogEditText.getText().toString());
+                }
+            }
+        });
+        Button dialogCancelButton=(Button)dialog.findViewById(R.id.dialogCancelButton);
+        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+    }
+
+    private void showDialogSelectItem(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        //builder.setTitle("Make your selection");
+        builder.setItems(itemsChooseSelect, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                switch (item){
+                    case 0:
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                int setMonth = 0,  setYear = 0, setDay = 0;
+                                setYear = year - mYear;
+                                if(monthOfYear - mMonth >= 0)
+                                    setMonth = monthOfYear - mMonth + setYear*12;
+                                else
+                                    setMonth = setYear*12 - (mMonth - monthOfYear);
+
+                                if(setMonth == 0)
+                                    setDay = dayOfMonth - mDay;
+                                else if(dayOfMonth - mDay >= 0)
+                                    setDay = setMonth*30 + (dayOfMonth - mDay);
+                                else
+                                    setDay = setMonth*30 - (mDay - dayOfMonth);
+                                if(setDay > 0){
+                                    sharedPreferences.edit().putString(Default.TARGET_DAY_END, String.valueOf(setDay)).commit();
+                                    dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_DAY_END, getResources().getString(R.string.dayChoose)));
+                                }
+                            }
+                        } ,mYear, mMonth, mDay);
+
+                        datePickerDialog.show();
+                        break;
+                    case 1:
+                        sharedPreferences.edit().remove(Default.DEFAULT_COUNTDOWN_KEY).commit();
+                        sharedPreferences.edit().remove(Default.TARGET_CONTENT).commit();
+                        sharedPreferences.edit().remove(Default.TARGET_DAY_END).commit();
+                        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
+                        dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.dayChoose)));
+                        timerTargetTextView.setVisibility(View.INVISIBLE);
+                        dayChooseTextView.setVisibility(View.INVISIBLE);
+                        dayEndTextView.setVisibility(View.INVISIBLE);
+                        break;
+                }
+
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
+
+
+        /*
     Find days between two date in miliseconds
      */
     public int daysBetween(long t1, long t2) {

@@ -12,14 +12,16 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/objective_dialog_title"
-        android:textSize="@dimen/objective_dialog_title_size" />
+        android:textSize="@dimen/objective_dialog_title_size"
+        android:id="@+id/txtDialogTitle" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="@string/objective_dialog_message"/>
+        android:text="@string/objective_dialog_message"
+        android:id="@+id/txtDialogQuestion" />
 
     <EditText
         android:id="@+id/dialogEditText"

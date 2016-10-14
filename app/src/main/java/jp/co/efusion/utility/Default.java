@@ -52,6 +52,12 @@ public class Default {
 
     public static final String LEARNING_OBJECTIVE_KEY="learning_objective_key";
 
+    public static final String DEFAULT_COUNTDOWN_KEY = "default_countdown_key";
+
+    public static final String TARGET_CONTENT = "target_content";
+
+    public static final String TARGET_DAY_END = "target_day_end";
+
     public static final String LEARNING_INITIAL_DATE_KEY="learning_initial_date_key";
 
     public static final String LEARNING_HOUR_KEY="learning_hours_key";
@@ -153,6 +159,8 @@ public class Default {
 
     public static final Boolean AUTO_PLAY_ENABLE_DEFAULT=false;
     public static final Boolean AUTO_NEXT_SENTENCE_ENABLE_DEFAULT=false;
+
+    public static final Boolean DEFAULT_TEXT_COUNTDOWN = false;
 
     public static final String AUTO_PLAY_INTERVAL="auto_play_interval";
 

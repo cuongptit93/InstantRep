@@ -202,6 +202,13 @@
         <item>Disable Item</item>
     </string-array>
     <!--List Setting end-->
+    
+    <string name="target">○○</string>
+    <string name="timerTaget">まであと</string>
+    <string name="dayChoose">▲▲</string>
+    <string name="dayEnd">日</string>
+    <string name="defaultTarget">タップして目標を設定しましょう！</string>
+    <string name="questionTarget">Input Content</string>
 
 
 </resources>
