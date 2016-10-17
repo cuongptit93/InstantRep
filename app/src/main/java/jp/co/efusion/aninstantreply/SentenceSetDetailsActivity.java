@@ -179,7 +179,6 @@ public class SentenceSetDetailsActivity extends ActionBarActivity implements Act
                 //Open setting fragment
                 showActionSheet();
                 return true;
-
             default:
                 break;
         }

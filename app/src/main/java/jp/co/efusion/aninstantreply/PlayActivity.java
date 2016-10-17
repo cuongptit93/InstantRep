@@ -182,8 +182,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         } else {
             FIRSTTIME_RESUME = true;
         }
-
-
     }
 
     @Override
@@ -294,6 +292,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 currentPage = position;
                 sentenceSetIDCallBack = sentenceSetId;
                 contentIDCallBack = SentenceUtils.getContenID(databaseHelper, sentenceSetId);
+                Toast.makeText(getApplicationContext(), String.valueOf(currentPage), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -432,8 +431,11 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         //resume audio
         if (mediaPlayerManager != null && AUDIO_CURRENT_POSITION != Default.ZERO) {
             mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
-            onMediaCompletion();
-        } else {
+            if(!mediaPlayerManager.isPlaying()){
+                onMediaCompletion();
+            }
+        }
+        else {
             //check timer && start timer
             if (IS_TIMER_RUNNING) {
                 onMediaCompletion();
