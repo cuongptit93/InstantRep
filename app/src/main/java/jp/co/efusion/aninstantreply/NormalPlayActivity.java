@@ -1,11 +1,15 @@
 package jp.co.efusion.aninstantreply;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
 import jp.co.efusion.MediaManager.MediaPlayerManager;
+import jp.co.efusion.MediaManager.SoundManager;
 import jp.co.efusion.database.FavoriteTable;
 import jp.co.efusion.database.SentenceTable;
 import jp.co.efusion.utility.CustomPagerAdapter;
@@ -126,10 +130,20 @@ public class NormalPlayActivity extends PlayActivity  {
         qPageTextView.setText((startPoint + 1) + " / " + sentenceList.size());
         //start audio
         try {
-            mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ?
+            pathPlayAudio = Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ?
                     getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
-                    "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO)));
-            mediaPlayerManager.playAudio();
+                    "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO));
+
+            mediaPlayerManager = new MediaPlayerManager(pathPlayAudio);
+
+            soundManager = new SoundManager(pathPlayAudio);
+            soundManager.playAudio(audioSpeed);
+
+            mediaPlayerManager.prepare();
+            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            //mediaPlayerManager.playAudio();
+            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
                 mediaPlayerManager.pauseAudio();
@@ -174,6 +188,7 @@ public class NormalPlayActivity extends PlayActivity  {
     private void loadENAnswerData(Boolean animated, int originAnimation) {
 
         //clear all
+        checkNullAudio = true;
         clear();
         clearViewData();
         //update state
@@ -202,10 +217,21 @@ public class NormalPlayActivity extends PlayActivity  {
         aPageTextView.setText((startPoint + 1) + " / " + sentenceList.size());
         //start audio
         try {
-            mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ?
+            pathPlayAudio = Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ?
                     getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
-                    "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO)));
-            mediaPlayerManager.playAudio();
+                    "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO));
+
+            mediaPlayerManager = new MediaPlayerManager(pathPlayAudio);
+
+            soundManager = new SoundManager(pathPlayAudio);
+            soundManager.playAudio(audioSpeed);
+
+            mediaPlayerManager.prepare();
+            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            //mediaPlayerManager.playAudio();
+            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+
+            //mediaPlayerManager.playAudio();
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
                 mediaPlayerManager.pauseAudio();

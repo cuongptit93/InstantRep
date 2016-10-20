@@ -29,6 +29,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.efusion.MediaManager.SoundManager;
 import jp.co.efusion.aninstantreply.R;
 import jp.co.efusion.utility.CustomIOSDialog;
 import jp.co.efusion.utility.Default;
@@ -48,6 +49,10 @@ public class SettingFragment extends Fragment {
     //private static final int AUDIO_VOLUME_POSITION = 12;
 
     private String[] arraySetting;
+
+    boolean checkOpenAudioSetting = false;
+
+    SoundManager mSoundManager;
 
     //position list SettingApp
     private int checkPositionSetting = 0, chunkplayTiemrPosition, chunkplayIntervalPosition, autoplayIntervalPosition,
@@ -389,13 +394,13 @@ public class SettingFragment extends Fragment {
                     autoplayIntervalPosition = position;
                 }
 
-                if (arraySetting[checkPositionSetting].equals(getString(R.string.audio_speed_setting))) {
+                /*if (arraySetting[checkPositionSetting].equals(getString(R.string.audio_speed_setting))) {
                     vh.settingsTitleTextView.setText(getResources().getString(R.string.audio_speed_setting));
                     vh.settingsValueTextView.setVisibility(View.VISIBLE);
                     vh.settingsValueTextView.setText(String.valueOf(SettingUtils.getAudioSpeed(sharedPreferences)));
                     vh.navigationImageView.setVisibility(View.VISIBLE);
                     audioSpeedPostion = position;
-                }
+                }*/
 
                 if (arraySetting[checkPositionSetting].equals(getString(R.string.audio_volumn_setting))) {
                     vh.settingsTitleTextView.setText(getResources().getString(R.string.audio_volumn_setting));
@@ -436,6 +441,44 @@ public class SettingFragment extends Fragment {
                         }
                     });
                     audioVolumePosition = position;
+                }
+
+                if (arraySetting[checkPositionSetting].equals(getString(R.string.speed_setting))) {
+                    vh.settingsTitleTextView.setText(getResources().getString(R.string.speed_setting));
+                    vh.settingsValueTextView.setVisibility(View.VISIBLE);
+                    vh.navigationImageView.setVisibility(View.INVISIBLE);
+                    vh.seekBar.setVisibility(View.VISIBLE);
+                    vh.seekBar.setMax(20);
+                    vh.settingsValueTextView.setText(String.valueOf((float)sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING)/10));
+                    vh.seekBar.setProgress(sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING));
+                    vh.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                        @Override
+                        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                            if(progress == 0){
+                                sharedPreferences.edit().putInt(Default.SPEED_SETTING, 1).commit();
+                                vh.settingsValueTextView.setText("0");
+                            }
+                            else{
+                                sharedPreferences.edit().putInt(Default.SPEED_SETTING, progress).commit();
+                                vh.settingsValueTextView.setText(String.valueOf((float)sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING)/10));
+                            }
+                        }
+
+                        @Override
+                        public void onStartTrackingTouch(SeekBar seekBar) {
+                            if(checkOpenAudioSetting){
+                                mSoundManager.releaseAudio();
+                                checkOpenAudioSetting = false;
+                            }
+                        }
+
+                        @Override
+                        public void onStopTrackingTouch(SeekBar seekBar) {
+                            mSoundManager = new SoundManager(sharedPreferences.getString(Default.PATH_AUDIO_SPEED_SETTING, ""));
+                            mSoundManager.playAudio((float) sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING)/10);
+                            checkOpenAudioSetting = true;
+                        }
+                    });
                 }
 
                 if (arraySetting[checkPositionSetting].equals(getString(R.string.clear_settings_title))) {

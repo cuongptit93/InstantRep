@@ -99,7 +99,7 @@ public class SettingUtils {
         sharedPreferences.edit().putFloat(Default.AUDIO_SPEED_SETTING, value).commit();
     }
 
-    public static float getAudioSpeed(SharedPreferences sharedPreferences) {
+    /*public static float getAudioSpeed(SharedPreferences sharedPreferences) {
         return sharedPreferences.getFloat(Default.AUDIO_SPEED_SETTING, Default.AUDIO_SPEED_SETTING_VALUES[0]);
-    }
+    }*/
 }

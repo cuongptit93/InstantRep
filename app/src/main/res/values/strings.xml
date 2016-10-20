@@ -164,6 +164,7 @@
     <string name="version_value">1.0.0</string>
     <string name="settings_time_unit"> S</string>
     <string name="audio_speed_setting">Audio Speed</string>
+    <string name="speed_setting">Speed</string>
     <string name="audio_volumn_setting">Volume</string>
 
     <string name="settingclear_dialog_title">Clear Settings</string>
@@ -193,6 +194,8 @@
         <item>Disable Item</item>
         <item>AutoPlay Interval Time</item>
         <item>Audio Speed</item>
+        <item>Disable Item</item>
+        <item>Speed</item>
         <item>Disable Item</item>
         <item>Volume</item>
         <item>Disable Item</item>

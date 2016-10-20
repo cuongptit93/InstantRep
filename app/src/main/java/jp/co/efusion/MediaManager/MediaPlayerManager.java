@@ -16,10 +16,10 @@ public class MediaPlayerManager implements MediaPlayer.OnCompletionListener {
     MediaPlayer mediaPlayer = null;
     MediaCompletionListener mediaCompletionListener;
 
+
     public MediaPlayerManager(String filePath) throws IOException{
 
         mediaPlayer=new MediaPlayer();
-
         File audioFile =  new File(filePath);
         if (!audioFile.exists()){
             throw new IOException("file " + audioFile.getAbsolutePath() + " not exist");
@@ -84,12 +84,20 @@ public class MediaPlayerManager implements MediaPlayer.OnCompletionListener {
      * @return
      */
     public int getDuration(){
-        try {
+        /*try {
             if (mediaPlayer != null) {
                 return mediaPlayer.getDuration();
             }
-        }catch (Exception e){}
-        return Default.ZERO;
+        }catch (Exception e){}*/
+        return mediaPlayer.getDuration();
+    }
+
+    public void prepare(){
+        try {
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getCurrentPosition(){

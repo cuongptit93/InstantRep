@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import java.io.IOException;
 
 import jp.co.efusion.MediaManager.MediaPlayerManager;
+import jp.co.efusion.MediaManager.SoundManager;
 import jp.co.efusion.database.ChunkTable;
 import jp.co.efusion.database.SentenceTable;
 import jp.co.efusion.utility.Default;
@@ -182,7 +183,13 @@ public class ChunkPlayService extends PlayService {
             mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_QUES_AUDIO)));
-            mediaPlayerManager.playAudio();
+
+            soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
+                    ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
+                    "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_QUES_AUDIO)));
+            soundManager.playAudio(audioSpeed);
+
+            //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
                 mediaPlayerManager.pauseAudio();
                 mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
@@ -211,7 +218,13 @@ public class ChunkPlayService extends PlayService {
             mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_ANS_AUDIO)));
-            mediaPlayerManager.playAudio();
+
+            soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
+                    ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
+                    "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_ANS_AUDIO)));
+            soundManager.playAudio(audioSpeed);
+
+            //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
                 mediaPlayerManager.pauseAudio();
                 mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
@@ -242,7 +255,12 @@ public class ChunkPlayService extends PlayService {
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO)));
 
-            mediaPlayerManager.playAudio();
+            soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
+                    ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
+                    "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO)));
+            soundManager.playAudio(audioSpeed);
+
+            //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
                 mediaPlayerManager.pauseAudio();
                 mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);
@@ -272,7 +290,12 @@ public class ChunkPlayService extends PlayService {
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO)));
 
-            mediaPlayerManager.playAudio();
+            soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
+                    ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
+                    "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO)));
+            soundManager.playAudio(audioSpeed);
+
+            //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
                 mediaPlayerManager.pauseAudio();
                 mediaPlayerManager.resumeAudio(AUDIO_CURRENT_POSITION);

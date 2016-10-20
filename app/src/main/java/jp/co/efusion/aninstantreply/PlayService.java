@@ -15,6 +15,7 @@ import java.util.List;
 
 import jp.co.efusion.MediaManager.MediaCompletionListener;
 import jp.co.efusion.MediaManager.MediaPlayerManager;
+import jp.co.efusion.MediaManager.SoundManager;
 import jp.co.efusion.database.DatabaseHelper;
 import jp.co.efusion.database.SentenceSetTable;
 import jp.co.efusion.database.SentenceTable;
@@ -31,6 +32,9 @@ public abstract class PlayService extends Service implements MediaCompletionList
     private static final String TAG = PlayService.class.getSimpleName();
 
     MediaPlayerManager mediaPlayerManager = null;
+
+    SoundManager soundManager = null;
+    float audioSpeed;
 
     final IBinder mBinder = new ServiceBinder();
 
@@ -84,7 +88,6 @@ public abstract class PlayService extends Service implements MediaCompletionList
                 Context.MODE_PRIVATE);
     }
 
-
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
@@ -92,6 +95,8 @@ public abstract class PlayService extends Service implements MediaCompletionList
 
     @Override
     public int onStartCommand(final Intent intent, int flags, int startId) {
+        //get and send value audioSpeed to Activity.
+        audioSpeed = (float) sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING)/10;
         Log.d(TAG, "onStartCommand");
         try {
             initParams(intent);

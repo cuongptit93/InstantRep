@@ -172,6 +172,15 @@ public class Default {
 
     public static final float[] AUDIO_SPEED_SETTING_VALUES = {1f, 1.2f, 1.5f, 2};
 
+    /*Audio Speed test begin */
+    public static final String SPEED_SETTING = "speed_setting";
+    public static final int DEFAULT_SPEED_SETTING = 10;
+    /*Audio Speed test end */
+
+    /*Audio Speed setting test begin */
+    public static final String PATH_AUDIO_SPEED_SETTING = "audio_speed_setting";
+    /*Audio Speed setting test end */
+
     public static final String CHUNK_PLAY_INTERVAL="chunk_play_interval";
 
     public static final int[] CHUNK_PLAY_INTERVAL_VALUES={3,5,8,10};

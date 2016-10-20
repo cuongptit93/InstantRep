@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.io.IOException;
 
 import jp.co.efusion.MediaManager.MediaPlayerManager;
+import jp.co.efusion.MediaManager.SoundManager;
 import jp.co.efusion.database.ChunkTable;
 import jp.co.efusion.database.FavoriteTable;
 import jp.co.efusion.database.SentenceTable;
@@ -417,10 +418,23 @@ public class ChunkPlayActivity extends PlayActivity {
 
         //start audio
         try {
-            mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
+            pathPlayAudio = Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) :
-                            cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) + "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_QUES_AUDIO)));
-            mediaPlayerManager.playAudio();
+                            cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID)))
+                    + "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_QUES_AUDIO));
+
+            mediaPlayerManager = new MediaPlayerManager(pathPlayAudio);
+            //mediaPlayerManager.playAudio();
+
+            soundManager = new SoundManager(pathPlayAudio);
+            soundManager.playAudio(audioSpeed);
+
+            mediaPlayerManager.prepare();
+            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            //mediaPlayerManager.playAudio();
+            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+
+
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
                 mediaPlayerManager.pauseAudio();
@@ -463,6 +477,7 @@ public class ChunkPlayActivity extends PlayActivity {
      */
     private void loadChunkAnswerData(Boolean animated, int originAnimation) {
         //clear all
+        checkNullAudio = true;
         clear();
         clearViewData();
         //update state
@@ -497,10 +512,23 @@ public class ChunkPlayActivity extends PlayActivity {
         aPageTextView.setText((startPoint + 1) + " / " + sentenceList.size());
         //start audio
         try {
-            mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
+            pathPlayAudio = Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) :
-                            cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) + "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_ANS_AUDIO)));
-            mediaPlayerManager.playAudio();
+                            cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID)))
+                    + "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_ANS_AUDIO));
+
+            mediaPlayerManager = new MediaPlayerManager(pathPlayAudio);
+
+            soundManager = new SoundManager(pathPlayAudio);
+
+            soundManager.playAudio(audioSpeed);
+
+            mediaPlayerManager.prepare();
+            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            //mediaPlayerManager.playAudio();
+            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+
+            //mediaPlayerManager.playAudio();
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
                 mediaPlayerManager.pauseAudio();
@@ -576,11 +604,23 @@ public class ChunkPlayActivity extends PlayActivity {
         pageTextView.setText((startPoint + 1) + " / " + sentenceList.size());
         //start audio
         try {
-
-            mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
+            pathPlayAudio = Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) :
-                            cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) + "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO)));
-            mediaPlayerManager.playAudio();
+                            cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID)))
+                    + "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO));
+
+            mediaPlayerManager = new MediaPlayerManager(pathPlayAudio);
+
+            soundManager = new SoundManager(pathPlayAudio);
+
+            soundManager.playAudio(audioSpeed);
+
+            mediaPlayerManager.prepare();
+            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            //mediaPlayerManager.playAudio();
+            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+
+            //mediaPlayerManager.playAudio();
 
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
@@ -659,18 +699,28 @@ public class ChunkPlayActivity extends PlayActivity {
         fpageTextView.setText((startPoint + 1) + " / " + sentenceList.size());
         //start audio
         try {
-
             //mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET)?getContentID(sentenceList.get(startPoint)):contentID) + "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO)));
 
 //            if(!questionPlayed) {
 //                mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : contentID) + "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO)));
 //
 //            }else {
-            mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ?
+            pathPlayAudio = Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ?
                     getContentID(sentenceList.get(startPoint)) :
-                    cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) + "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO)));
+                    cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID)))
+                    + "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO));
+
+            mediaPlayerManager = new MediaPlayerManager(pathPlayAudio);
             //}
-            mediaPlayerManager.playAudio();
+            //mediaPlayerManager.playAudio();
+            soundManager = new SoundManager(pathPlayAudio);
+
+            soundManager.playAudio(audioSpeed);
+
+            mediaPlayerManager.prepare();
+            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            //mediaPlayerManager.playAudio();
+            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
             //check came from background then pause audio
 
 
