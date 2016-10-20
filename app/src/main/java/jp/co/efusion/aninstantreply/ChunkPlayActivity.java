@@ -434,7 +434,6 @@ public class ChunkPlayActivity extends PlayActivity {
             //mediaPlayerManager.playAudio();
             CountDownTimePlayAudio((long)seconds, TIME_COUNT);
 
-
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
                 mediaPlayerManager.pauseAudio();

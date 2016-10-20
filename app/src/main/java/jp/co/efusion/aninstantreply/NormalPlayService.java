@@ -60,7 +60,6 @@ public class NormalPlayService extends PlayService {
     private void loadJPQuestionData() {
         //clear all
         clear();
-
         //update state
         PLAY_STATE = Default.QUESTION_STATE;
         //start audio
@@ -85,16 +84,13 @@ public class NormalPlayService extends PlayService {
         } catch (IOException e) {
             Log.e(TAG, "loadJPQuestionData() error " + e);
         }
-
     }
 
     private void loadENAnswerData() {
         //clear all
         clear();
-
         //update state
         PLAY_STATE = Default.ANSWER_STATE;
-
         //start audio
         try {
             mediaPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +

@@ -309,7 +309,6 @@ public class SettingFragment extends Fragment {
                 vh.navigationImageView = (ImageView) view.findViewById(R.id.navigationImageView);
                 vh.autoPlaySwitch = (Switch) view.findViewById(R.id.autoPlaySwitch);
                 vh.seekBar = (SeekBar) view.findViewById(R.id.seekBar);
-
                 view.setTag(vh);
             } else {
                 vh = (ViewHolder) view.getTag();
@@ -409,6 +408,7 @@ public class SettingFragment extends Fragment {
                     vh.seekBar.setVisibility(View.VISIBLE);
 
                     audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+
                     currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
                     maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
                     vh.seekBar.setMax(maxVolume);
@@ -466,17 +466,21 @@ public class SettingFragment extends Fragment {
 
                         @Override
                         public void onStartTrackingTouch(SeekBar seekBar) {
-                            if(checkOpenAudioSetting){
-                                mSoundManager.releaseAudio();
-                                checkOpenAudioSetting = false;
+                            if(!sharedPreferences.getString(Default.PATH_AUDIO_SPEED_SETTING, "").equals("")){
+                                if(checkOpenAudioSetting){
+                                    mSoundManager.releaseAudio();
+                                    checkOpenAudioSetting = false;
+                                }
                             }
                         }
 
                         @Override
                         public void onStopTrackingTouch(SeekBar seekBar) {
-                            mSoundManager = new SoundManager(sharedPreferences.getString(Default.PATH_AUDIO_SPEED_SETTING, ""));
-                            mSoundManager.playAudio((float) sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING)/10);
-                            checkOpenAudioSetting = true;
+                            if(!sharedPreferences.getString(Default.PATH_AUDIO_SPEED_SETTING, "").equals("")){
+                                mSoundManager = new SoundManager(sharedPreferences.getString(Default.PATH_AUDIO_SPEED_SETTING, ""));
+                                mSoundManager.playAudio((float) sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING)/10);
+                                checkOpenAudioSetting = true;
+                            }
                         }
                     });
                 }

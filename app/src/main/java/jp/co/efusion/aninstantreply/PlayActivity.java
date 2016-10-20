@@ -181,7 +181,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         } else {
             checkPause = false;
         }
-
     }
 
     @Override
