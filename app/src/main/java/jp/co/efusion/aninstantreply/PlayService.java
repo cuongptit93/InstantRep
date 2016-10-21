@@ -365,13 +365,10 @@ public abstract class PlayService extends Service implements MediaCompletionList
                 public void onFinish() {
                     TIMER_REMAINING_TIME = Default.ZERO;
                     onLoadNewSentence();
-
                 }
             }.start();
         }
-
         onPlayMediaCompletely();
-
         updateLearningTime(Default.RESUME_STATE);
     }
 

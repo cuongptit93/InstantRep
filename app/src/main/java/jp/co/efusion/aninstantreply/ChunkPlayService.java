@@ -187,7 +187,7 @@ public class ChunkPlayService extends PlayService {
             soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_QUES_AUDIO)));
-            soundManager.playAudio(audioSpeed);
+            //soundManager.playAudio(audioSpeed);
 
             //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
@@ -222,7 +222,7 @@ public class ChunkPlayService extends PlayService {
             soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + chunkCursor.getString(chunkCursor.getColumnIndex(ChunkTable.CHUNK_ANS_AUDIO)));
-            soundManager.playAudio(audioSpeed);
+            //soundManager.playAudio(audioSpeed);
 
             //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
@@ -258,7 +258,7 @@ public class ChunkPlayService extends PlayService {
             soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_QUESTION_AUDIO)));
-            soundManager.playAudio(audioSpeed);
+            //soundManager.playAudio(audioSpeed);
 
             //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
@@ -293,7 +293,7 @@ public class ChunkPlayService extends PlayService {
             soundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY + Default.RESOURCES_PREFIX +
                     ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) : cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) +
                     "/" + cursor.getString(cursor.getColumnIndex(SentenceTable.SENTENCE_ANSWER_AUDIO)));
-            soundManager.playAudio(audioSpeed);
+            //soundManager.playAudio(audioSpeed);
 
             //mediaPlayerManager.playAudio();
             if (AUDIO_CURRENT_POSITION > Default.ZERO && AUDIO_CURRENT_POSITION < mediaPlayerManager.getDuration()) {
