@@ -154,12 +154,7 @@ public class ThemeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!sharedPreferences.getBoolean(Default.DEFAULT_COUNTDOWN_KEY, Default.DEFAULT_TEXT_COUNTDOWN)){
-                    sharedPreferences.edit().putString(Default.TARGET_CONTENT, getResources().getString(R.string.target)).commit();
-                    sharedPreferences.edit().putBoolean(Default.DEFAULT_COUNTDOWN_KEY, true).commit();
-                    defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
-                    timerTargetTextView.setVisibility(View.VISIBLE);
-                    dayChooseTextView.setVisibility(View.VISIBLE);
-                    dayEndTextView.setVisibility(View.VISIBLE);
+                    showDialogTitleCountDown();
                 }
                 else {
                     showDialogCountDown();
@@ -182,8 +177,11 @@ public class ThemeFragment extends Fragment {
 
     @Override
     public void onStart(){
-
         super.onStart();
+
+        /*sharedPreferences.edit().remove(Default.DEFAULT_COUNTDOWN_KEY).commit();
+        sharedPreferences.edit().remove(Default.TARGET_CONTENT).commit();
+        sharedPreferences.edit().remove(Default.TARGET_DAY_END).commit();*/
 
         ///////get date CountDown ///////////
         mCalendar = Calendar.getInstance();
@@ -199,9 +197,10 @@ public class ThemeFragment extends Fragment {
             timerTargetTextView.setVisibility(View.VISIBLE);
             dayChooseTextView.setVisibility(View.VISIBLE);
             dayEndTextView.setVisibility(View.VISIBLE);
+            defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
+            dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_DAY_END, getResources().getString(R.string.dayChoose)));
         }
-        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
-        dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_DAY_END, getResources().getString(R.string.dayChoose)));
+        //defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
 
         //add dynamic function here
         Log.e("Fragment", "Start ");
@@ -352,6 +351,53 @@ public class ThemeFragment extends Fragment {
 
     }
 
+    private void showDialogTitleCountDown(){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.objective_dialog_layout);
+        WindowManager.LayoutParams lp = new        WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int screenWidth = (int) (metrics.widthPixels * 0.80);
+        lp.width = screenWidth;//WindowManager.LayoutParams.MATCH_PARENT;
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
+        final EditText dialogEditText=(EditText) dialog.findViewById(R.id.dialogEditText);
+        final TextView dialogQuestion = (TextView) dialog.findViewById(R.id.txtDialogQuestion);
+        final TextView dialogTitle = (TextView) dialog.findViewById(R.id.txtDialogTitle);
+        dialogQuestion.setText(R.string.titleTarget);
+        dialogTitle.setText(R.string.titleTargetDialog);
+
+        //dialog click event
+        Button dialogOkButton=(Button)dialog.findViewById(R.id.dialogOkButton);
+        dialogOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+                if (dialogEditText.getText().length() > 0) {
+                    sharedPreferences.edit().putString(Default.TARGET_TITLE, dialogEditText.getText().toString()).commit();
+                    sharedPreferences.edit().putBoolean(Default.DEFAULT_COUNTDOWN_KEY, true).commit();
+                    sharedPreferences.edit().putString(Default.TARGET_CONTENT, getResources().getString(R.string.target)).commit();
+                    timerTargetTextView.setVisibility(View.VISIBLE);
+                    dayChooseTextView.setVisibility(View.VISIBLE);
+                    dayEndTextView.setVisibility(View.VISIBLE);
+                    defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
+                }
+            }
+        });
+        Button dialogCancelButton=(Button)dialog.findViewById(R.id.dialogCancelButton);
+        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+    }
+
     private void showDialogSelectItem(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         //builder.setTitle("Make your selection");
@@ -385,14 +431,19 @@ public class ThemeFragment extends Fragment {
                         datePickerDialog.show();
                         break;
                     case 1:
-                        sharedPreferences.edit().remove(Default.DEFAULT_COUNTDOWN_KEY).commit();
+                        //sharedPreferences.edit().remove(Default.DEFAULT_COUNTDOWN_KEY).commit();
+                       /* sharedPreferences.edit().remove(Default.TARGET_CONTENT).commit();
+                        sharedPreferences.edit().remove(Default.TARGET_DAY_END).commit();
+                        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
+                        dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.dayChoose)));
+                        */
+                        /*timerTargetTextView.setVisibility(View.INVISIBLE);
+                        dayChooseTextView.setVisibility(View.INVISIBLE);
+                        dayEndTextView.setVisibility(View.INVISIBLE);*/
                         sharedPreferences.edit().remove(Default.TARGET_CONTENT).commit();
                         sharedPreferences.edit().remove(Default.TARGET_DAY_END).commit();
-                        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
+                        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
                         dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.dayChoose)));
-                        timerTargetTextView.setVisibility(View.INVISIBLE);
-                        dayChooseTextView.setVisibility(View.INVISIBLE);
-                        dayEndTextView.setVisibility(View.INVISIBLE);
                         break;
                 }
 

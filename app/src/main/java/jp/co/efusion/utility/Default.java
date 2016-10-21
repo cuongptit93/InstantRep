@@ -56,6 +56,8 @@ public class Default {
 
     public static final String TARGET_CONTENT = "target_content";
 
+    public static final String TARGET_TITLE = "target_title";
+
     public static final String TARGET_DAY_END = "target_day_end";
 
     public static final String LEARNING_INITIAL_DATE_KEY="learning_initial_date_key";

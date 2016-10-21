@@ -78,7 +78,8 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     volatile int purchaseIndicator;
     int sentenceSetId, contentID, sentenceSetAuto;
     String themeId, setTitle, titleCallBack;
-    boolean isShuffled, checkSetting = false, checkPause = false, checkNullAudio = false, checkOnStopActivity = false, checkRepeatAudio = false;
+    boolean isShuffled, checkSetting = false, checkPause = false, checkNullAudio = false,
+            checkOnStopActivity = false, checkRepeatAudio = false, checkStopDialog = false;
     ///, checkScreenoOff = false
     String free_Set, theme_no;
     //flag for identify favorite data set
@@ -201,6 +202,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
         if (IS_ALERT_SHOWING) {
             return;
         }
+
         startAudioService();
         //bind to service
         doBindService();
@@ -228,7 +230,9 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             coutTimeMediaPlayer.cancel();
         }else{
             checkOnStopActivity = true;
-            onMediaCompletion();
+            if(!checkStopDialog){
+                onMediaCompletion();
+            }
         }
          /*else {
             if (mediaPlayerManager != null)
@@ -764,6 +768,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                     IS_TIMER_RUNNING = false;
                     TIMER_REMAINING_TIME = Default.ZERO;
                 }*/
+                checkStopDialog = false;
                 if(checkRepeatAudio){
                     repeatSoundManager.resumeAudio();
                 }
@@ -786,9 +791,9 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                     IS_TIMER_RUNNING = false;
                     TIMER_REMAINING_TIME = Default.ZERO;
                 }*/
-
+                checkStopDialog = false;
                 if(checkRepeatAudio){
-                    repeatSoundManager.pauseAudio();
+                    repeatSoundManager.resumeAudio();
                 }
                 soundManager.resumeAudio();
                 CountDownTimePlayAudio(millisUntilFinishedCountTime + TIME_DELAY, TIME_COUNT);
@@ -824,12 +829,14 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                 if(checkRepeatAudio){
                     repeatSoundManager.resumeAudio();
                 }
+                checkStopDialog = false;
                 resumeMediaPlay();
                 CountDownTimePlayAudio(millisUntilFinishedCountTime + TIME_DELAY, TIME_COUNT);
             }
 
             @Override
             public void onOk() {
+                checkStopDialog = false;
                 if(checkRepeatAudio){
                     repeatSoundManager.releaseAudio();
                     checkRepeatAudio = false;
@@ -898,6 +905,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             autoPlayTimer.cancel();
             autoPlayTimer = null;
         }*/
+        checkStopDialog = true;
         if (IS_TIMER_RUNNING && autoPlayTimer != null) {
             //stop timer
             autoPlayTimer.cancel();
@@ -940,6 +948,9 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             autoPlayTimer.cancel();
             autoPlayTimer = null;
         }*/
+
+        checkStopDialog = true;
+
         if (IS_TIMER_RUNNING && autoPlayTimer != null) {
             //stop timer
             autoPlayTimer.cancel();
@@ -976,6 +987,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             autoPlayTimer.cancel();
             autoPlayTimer = null;
         }*/
+        checkStopDialog = true;
         if (IS_TIMER_RUNNING && autoPlayTimer != null) {
             //stop timer
             autoPlayTimer.cancel();
@@ -1295,6 +1307,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     @Override
     public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
         if (isCancel) {
+            checkStopDialog = false;
             if(checkRepeatAudio){
                 repeatSoundManager.resumeAudio();
             }
@@ -1321,7 +1334,8 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
                     checkRepeatAudio = false;
                 }
                 sharedPreferences.edit().putString(Default.PATH_AUDIO_SPEED_SETTING, pathPlayAudio).commit();
-                AUTO_PLAY_ON = false;
+                //AUTO_PLAY_ON = false;
+                checkStopDialog = false;
                 checkSetting = true;
                 startActivity(i);
                 break;
@@ -1378,6 +1392,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             return false;
         }
     }
+
     public void CountDownTimePlayAudio(long millisInFuture, long countDownInterval){
         coutTimeMediaPlayer = new CountDownTimer(millisInFuture, countDownInterval) {
             @Override

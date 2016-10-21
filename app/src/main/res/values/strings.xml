@@ -212,6 +212,8 @@
     <string name="dayEnd">日</string>
     <string name="defaultTarget">タップして目標を設定しましょう！</string>
     <string name="questionTarget">Input Content</string>
+    <string name="titleTarget">Input Title</string>
+    <string name="titleTargetDialog">Title</string>
 
 
 </resources>
