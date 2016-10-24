@@ -66,6 +66,7 @@ public class SettingFragment extends Fragment {
     private AudioManager audioManager = null;
 
     private CustomIOSDialog customIOSDialog;
+    private  boolean isPlaySound;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -470,6 +471,7 @@ public class SettingFragment extends Fragment {
                                 if(checkOpenAudioSetting){
                                     mSoundManager.releaseAudio();
                                     checkOpenAudioSetting = false;
+                                    isPlaySound = false;
                                 }
                             }
                         }
@@ -480,6 +482,7 @@ public class SettingFragment extends Fragment {
                                 mSoundManager = new SoundManager(sharedPreferences.getString(Default.PATH_AUDIO_SPEED_SETTING, ""));
                                 mSoundManager.playAudio((float) sharedPreferences.getInt(Default.SPEED_SETTING, Default.DEFAULT_SPEED_SETTING)/10);
                                 checkOpenAudioSetting = true;
+                                isPlaySound = true;
                             }
                         }
                     });
@@ -518,6 +521,9 @@ public class SettingFragment extends Fragment {
     public void onPause() {
         super.onPause();
         Log.e("Setting Fragment", "On Pause");
+        if(isPlaySound){
+            mSoundManager.pauseAudio();
+        }
         //updateLearningTime(Default.PAUSE_STATE);
     }
 
@@ -526,6 +532,15 @@ public class SettingFragment extends Fragment {
         super.onResume();
         Log.e("Setting Fragment", "On resume");
         //updateLearningTime(Default.RESUME_STATE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(isPlaySound){
+            mSoundManager.releaseAudio();
+            isPlaySound = false;
+        }
     }
 
     /*
