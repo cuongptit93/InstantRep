@@ -47,7 +47,7 @@
             android:textColor="@color/black_color"
             android:layout_toLeftOf="@+id/autoPLayButton"
             android:textSize="@dimen/statistics_value_size"
-            android:layout_toEndOf="@+id/exitButton" />
+            android:layout_toRightOf="@+id/exitButton" />
 
         <Button
             style="?android:attr/buttonStyleSmall"

@@ -22,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 
@@ -95,7 +94,7 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     Boolean IS_TIMER_RUNNING = false, IS_ALERT_SHOWING = false, IS_FROM_BACKGROUND_SERVICE = false;
     long TIMER_REMAINING_TIME = 0, TIMER_REMAINING_TIME_SERVICE = Default.ZERO;
 
-    float audioSpeed;
+    float audioSpeed, secondsSound;
 
     //flag for autoplay mode
     Boolean AUTO_PLAY_ON = false;
@@ -1043,7 +1042,6 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
     private void updateLearningTime(int state) {
         if (state == Default.RESUME_STATE) {
             sharedPreferences.edit().putLong(Default.LEARNING_SESSION_KEY, System.currentTimeMillis()).commit();
-
         } else if (state == Default.PAUSE_STATE) {
             SettingUtils.setStudyTime(this);
         }
@@ -1065,17 +1063,22 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
             }
         }
         try {
-            repeatPlayerManager = new MediaPlayerManager(Default.RESOURCES_BASE_DIRECTORY +
-                    Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) :
-                    cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) + "/" +
-                    cursor.getString(cursor.getColumnIndex(((PLAY_STATE == Default.QUESTION_STATE) ? SentenceTable.SENTENCE_QUESTION_AUDIO : SentenceTable.SENTENCE_ANSWER_AUDIO))));
 
-            repeatSoundManager = new SoundManager(Default.RESOURCES_BASE_DIRECTORY +
-                    Default.RESOURCES_PREFIX + ((IS_FAVORITE_SET) ? getContentID(sentenceList.get(startPoint)) :
-                    cursor.getInt(cursor.getColumnIndex(SentenceTable.CONTENT_ID))) + "/" +
-                    cursor.getString(cursor.getColumnIndex(((PLAY_STATE == Default.QUESTION_STATE) ? SentenceTable.SENTENCE_QUESTION_AUDIO : SentenceTable.SENTENCE_ANSWER_AUDIO))));
-            repeatSoundManager.playAudio(audioSpeed);
-            checkRepeatAudio = true;
+            repeatPlayerManager = new MediaPlayerManager(pathPlayAudio);
+            if(millisUntilFinishedCountTime < 200){
+                repeatSoundManager = new SoundManager(pathPlayAudio);
+                repeatSoundManager.playAudio(audioSpeed);
+                checkRepeatAudio = true;
+                if (IS_TIMER_RUNNING && autoPlayTimer != null) {
+                    //stop timer
+                    autoPlayTimer.cancel();
+                    autoPlayTimer = null;
+                }
+                coutTimeMediaPlayer.cancel();
+                repeatPlayerManager.prepare();
+                secondsSound = (((repeatPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+                CountDownTimePlayAudio((long)secondsSound, TIME_COUNT);
+            }
 
             //repeatPlayerManager.playAudio();
         } catch (IOException e) {
@@ -1381,14 +1384,17 @@ public class PlayActivity extends ActionBarActivity implements MediaCompletionLi
 
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
-            soundManager.stopAudio();
-            soundManager.releaseAudio();
-            if(checkRepeatAudio){
-                repeatSoundManager.stopAudio();
-                repeatSoundManager.releaseAudio();
-                checkRepeatAudio = false;
+            if(millisUntilFinishedCountTime < 200){
+                soundManager.stopAudio();
+                soundManager.releaseAudio();
+                if(checkRepeatAudio){
+                    repeatSoundManager.stopAudio();
+                    repeatSoundManager.releaseAudio();
+                    checkRepeatAudio = false;
+                }
+                repeatAudioPlay();
             }
-            repeatAudioPlay();
+
             return false;
         }
     }

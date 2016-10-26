@@ -206,14 +206,18 @@
     </string-array>
     <!--List Setting end-->
     
-    <string name="target">○○</string>
-    <string name="timerTaget">まであと</string>
+    <string name="goalContent">○○</string>
+    <string name="timerGoals">まであと</string>
     <string name="dayChoose">▲▲</string>
     <string name="dayEnd">日</string>
-    <string name="defaultTarget">タップして目標を設定しましょう！</string>
-    <string name="questionTarget">Input Content</string>
-    <string name="titleTarget">Input Title</string>
-    <string name="titleTargetDialog">Title</string>
+    <string name="defaultGoal">タップして目標を設定しましょう！</string>
+    <string name="questionGoal">Input Content</string>
+    <string name="titleGoal">Goal Input</string>
+    <string name="titleGoalDialog">What is your goal?</string>
+
+    <string name="inputGoal">What is your goal?</string>
+    <string name="setDefaulGoal">Set Default</string>
+    <string name="deadlineGoal">Warning: You have already finished your goal?</string>
 
 
 </resources>

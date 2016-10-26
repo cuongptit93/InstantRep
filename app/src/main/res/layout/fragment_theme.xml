@@ -27,14 +27,14 @@
             android:weightSum="3"
             android:paddingBottom="2dp"
             android:orientation="horizontal"
-            android:background="@color/target"
+            android:background="@color/learning_objective_back_color"
             android:id="@+id/lnTarget"
             android:padding="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/defaultTarget"
+                android:text="@string/defaultGoal"
                 android:textColor="@color/white_color"
                 android:id="@+id/txtDefaultContent"
                 android:paddingLeft="20dp"
@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/timerTaget"
+                android:text="@string/timerGoals"
                 android:id="@+id/txtTimerTarget"
                 android:textColor="@color/white_color"
                 android:textStyle="bold" />

@@ -430,9 +430,9 @@ public class ChunkPlayActivity extends PlayActivity {
             soundManager.playAudio(audioSpeed);
 
             mediaPlayerManager.prepare();
-            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            secondsSound = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
             //mediaPlayerManager.playAudio();
-            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+            CountDownTimePlayAudio((long)secondsSound, TIME_COUNT);
 
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
@@ -523,9 +523,9 @@ public class ChunkPlayActivity extends PlayActivity {
             soundManager.playAudio(audioSpeed);
 
             mediaPlayerManager.prepare();
-            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            secondsSound = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
             //mediaPlayerManager.playAudio();
-            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+            CountDownTimePlayAudio((long)secondsSound, TIME_COUNT);
 
             //mediaPlayerManager.playAudio();
             //check came from background then pause audio
@@ -615,9 +615,9 @@ public class ChunkPlayActivity extends PlayActivity {
             soundManager.playAudio(audioSpeed);
 
             mediaPlayerManager.prepare();
-            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            secondsSound = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
             //mediaPlayerManager.playAudio();
-            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+            CountDownTimePlayAudio((long)secondsSound, TIME_COUNT);
 
             //mediaPlayerManager.playAudio();
 
@@ -717,9 +717,9 @@ public class ChunkPlayActivity extends PlayActivity {
             soundManager.playAudio(audioSpeed);
 
             mediaPlayerManager.prepare();
-            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            secondsSound = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
             //mediaPlayerManager.playAudio();
-            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+            CountDownTimePlayAudio((long)secondsSound, TIME_COUNT);
             //check came from background then pause audio
 
 

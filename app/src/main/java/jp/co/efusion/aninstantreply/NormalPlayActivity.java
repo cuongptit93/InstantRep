@@ -1,10 +1,7 @@
 package jp.co.efusion.aninstantreply;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.CountDownTimer;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -140,9 +137,9 @@ public class NormalPlayActivity extends PlayActivity  {
             soundManager.playAudio(audioSpeed);
 
             mediaPlayerManager.prepare();
-            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            secondsSound = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
             //mediaPlayerManager.playAudio();
-            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+            CountDownTimePlayAudio((long)secondsSound, TIME_COUNT);
 
             //check came from background then pause audio
             if (IS_FROM_BACKGROUND_SERVICE) {
@@ -227,9 +224,9 @@ public class NormalPlayActivity extends PlayActivity  {
             soundManager.playAudio(audioSpeed);
 
             mediaPlayerManager.prepare();
-            float seconds = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
+            secondsSound = (((mediaPlayerManager.getDuration() % (1000 * 60 * 60)) % (1000 * 60)) / 1000)*(1/audioSpeed)*1000;
             //mediaPlayerManager.playAudio();
-            CountDownTimePlayAudio((long)seconds, TIME_COUNT);
+            CountDownTimePlayAudio((long)secondsSound, TIME_COUNT);
 
             //mediaPlayerManager.playAudio();
             //check came from background then pause audio

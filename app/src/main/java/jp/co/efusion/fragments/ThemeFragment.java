@@ -1,16 +1,17 @@
 package jp.co.efusion.fragments;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,10 +23,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.datetimepickercustom.SlideDateTimeListener;
+import com.example.datetimepickercustom.SlideDateTimePicker;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -33,7 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 
 import jp.co.efusion.aninstantreply.R;
 import jp.co.efusion.aninstantreply.ThemeContentActivity;
@@ -64,8 +66,13 @@ public class ThemeFragment extends Fragment {
 
     private DatePicker mDatePicker;
     private Calendar mCalendar;
-    private int mYear, mMonth, mDay;
+    private int mYear, mMonth, mDay, getDay, getMonth, getYear;
     DatePickerDialog datePickerDialog;
+    private FragmentActivity myContext;
+
+    boolean showLimit = true;
+
+    private SimpleDateFormat mFormatter = new SimpleDateFormat("MMMM dd yyyy");
 
     public ThemeFragment() {
         // Required empty public constructor
@@ -154,10 +161,10 @@ public class ThemeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!sharedPreferences.getBoolean(Default.DEFAULT_COUNTDOWN_KEY, Default.DEFAULT_TEXT_COUNTDOWN)){
-                    showDialogTitleCountDown();
-                }
-                else {
                     showDialogCountDown();
+                }
+                else{
+                    showDialogTitleCountDown();
                 }
             }
         });
@@ -165,7 +172,24 @@ public class ThemeFragment extends Fragment {
         dayChooseTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogSelectItem();
+                //showDialogSelectItem();
+                Date date;
+                if(getDay !=0 && getYear !=0){
+                    date = new Date(getYear - 1900, getMonth, getDay);
+                }
+                else{
+                    date = new Date();
+                }
+                new SlideDateTimePicker.Builder(myContext.getSupportFragmentManager())
+                        .setListener(dateTimeListener)
+                        .setInitialDate(date)
+                        //.setMinDate(minDate)
+                        //.setMaxDate(maxDate)
+                        //.setIs24HourTime(true)
+                        //.setTheme(SlideDateTimePicker.HOLO_LIGHT)
+                        .setIndicatorColor(Color.parseColor("#990000"))
+                        .build()
+                        .show();
             }
         });
 
@@ -180,27 +204,63 @@ public class ThemeFragment extends Fragment {
         super.onStart();
 
         /*sharedPreferences.edit().remove(Default.DEFAULT_COUNTDOWN_KEY).commit();
-        sharedPreferences.edit().remove(Default.TARGET_CONTENT).commit();
-        sharedPreferences.edit().remove(Default.TARGET_DAY_END).commit();*/
+        sharedPreferences.edit().remove(Default.GOAL_CONTENT).commit();
+        sharedPreferences.edit().remove(Default.GOAL_DAY_END).commit();
+        sharedPreferences.edit().remove(Default.GET_DAY_GOAL).commit();
+        sharedPreferences.edit().remove(Default.GET_MONTH_GOAL).commit();
+        sharedPreferences.edit().remove(Default.GET_YEAR_GOAL).commit();*/
+        //sharedPreferences.edit().remove(Default.LIMIT_GOAL).commit();
 
         ///////get date CountDown ///////////
         mCalendar = Calendar.getInstance();
         mYear = mCalendar.get(Calendar.YEAR);
         mMonth = mCalendar.get(Calendar.MONTH);
         mDay = mCalendar.get(Calendar.DAY_OF_MONTH);
+
+        getYear = sharedPreferences.getInt(Default.GET_YEAR_GOAL, mCalendar.get(Calendar.YEAR));
+        getMonth = sharedPreferences.getInt(Default.GET_MONTH_GOAL, mCalendar.get(Calendar.MONTH));
+        getDay = sharedPreferences.getInt(Default.GET_DAY_GOAL, mCalendar.get(Calendar.DAY_OF_MONTH));
+
+
         if(!sharedPreferences.getBoolean(Default.DEFAULT_COUNTDOWN_KEY, Default.DEFAULT_TEXT_COUNTDOWN)){
             timerTargetTextView.setVisibility(View.INVISIBLE);
             dayChooseTextView.setVisibility(View.INVISIBLE);
             dayEndTextView.setVisibility(View.INVISIBLE);
         }
         else {
+            defaultContentTextview.setTextSize(18f);
             timerTargetTextView.setVisibility(View.VISIBLE);
             dayChooseTextView.setVisibility(View.VISIBLE);
             dayEndTextView.setVisibility(View.VISIBLE);
-            defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
-            dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_DAY_END, getResources().getString(R.string.dayChoose)));
+            defaultContentTextview.setText(sharedPreferences.getString(Default.GOAL_CONTENT, getResources().getString(R.string.goalContent)));
+            dayChooseTextView.setText(sharedPreferences.getString(Default.GOAL_DAY_END, getResources().getString(R.string.dayChoose)));
+
+            try {
+                if(getDate(getYear, getMonth, getDay) < Integer.parseInt(dayChooseTextView.getText().toString())){
+                    dayChooseTextView.setText(String.valueOf(getDate(getYear, getMonth, getDay)));
+                }
+            }
+            catch (Exception e){
+
+            }
+
         }
-        //defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.defaultTarget)));
+
+        if(dayChooseTextView.getText().toString().equals("0")){
+            showLimitGoalDialog();
+            sharedPreferences.edit().remove(Default.DEFAULT_COUNTDOWN_KEY).commit();
+            sharedPreferences.edit().remove(Default.GOAL_CONTENT).commit();
+            sharedPreferences.edit().remove(Default.GOAL_DAY_END).commit();
+            sharedPreferences.edit().remove(Default.GET_DAY_GOAL).commit();
+            sharedPreferences.edit().remove(Default.GET_MONTH_GOAL).commit();
+            sharedPreferences.edit().remove(Default.GET_YEAR_GOAL).commit();
+            timerTargetTextView.setVisibility(View.INVISIBLE);
+            dayChooseTextView.setVisibility(View.INVISIBLE);
+            dayEndTextView.setVisibility(View.INVISIBLE);
+            defaultContentTextview.setText(R.string.defaultGoal);
+            defaultContentTextview.setTextSize(15f);
+        }
+
 
         //add dynamic function here
         Log.e("Fragment", "Start ");
@@ -223,7 +283,6 @@ public class ThemeFragment extends Fragment {
             }
 
         //    learningDayTextview.setText(String.format());
-
 
             learningDayTextview.setText(String.format("%d", daycount));
 
@@ -264,6 +323,12 @@ public class ThemeFragment extends Fragment {
         //all connection close here
         Log.e("Fragment", "Destroy ");
         databaseHelper.closeDataBase();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        myContext=(FragmentActivity) activity;
+        super.onAttach(activity);
     }
 
     /*
@@ -315,41 +380,63 @@ public class ThemeFragment extends Fragment {
         final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.setContentView(R.layout.objective_dialog_layout);
-        WindowManager.LayoutParams lp = new        WindowManager.LayoutParams();
+        dialog.setContentView(R.layout.custom_goal_dialog);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int screenWidth = (int) (metrics.widthPixels * 0.80);
+        int screenWidth = (int) (metrics.widthPixels * 0.8);
         lp.width = screenWidth;//WindowManager.LayoutParams.MATCH_PARENT;
         dialog.show();
         dialog.getWindow().setAttributes(lp);
 
-        final EditText dialogEditText=(EditText)dialog.findViewById(R.id.dialogEditText);
-        final TextView dialogQuestion = (TextView) dialog.findViewById(R.id.txtDialogQuestion);
-        dialogQuestion.setText(R.string.questionTarget);
+        Button setGoal =(Button)dialog.findViewById(R.id.btnSetContent);
+        Button setDefault =(Button)dialog.findViewById(R.id.btnSetDefaul);
 
-        //dialog click event
-        Button dialogOkButton=(Button)dialog.findViewById(R.id.dialogOkButton);
-        dialogOkButton.setOnClickListener(new View.OnClickListener() {
+        setGoal.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 dialog.dismiss();
-                //save the input value
-                if (dialogEditText.getText().length() > 0) {
-                    sharedPreferences.edit().putString(Default.TARGET_CONTENT, dialogEditText.getText().toString()).commit();
-                    defaultContentTextview.setText(dialogEditText.getText().toString());
-                }
+                showDialogTitleCountDown();
             }
         });
-        Button dialogCancelButton=(Button)dialog.findViewById(R.id.dialogCancelButton);
-        dialogCancelButton.setOnClickListener(new View.OnClickListener() {
+
+        setDefault.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                dialog.dismiss();
+                defaultContentTextview.setTextSize(18f);
+                timerTargetTextView.setVisibility(View.VISIBLE);
+                dayChooseTextView.setVisibility(View.VISIBLE);
+                dayEndTextView.setVisibility(View.VISIBLE);
+                sharedPreferences.edit().putBoolean(Default.DEFAULT_COUNTDOWN_KEY, true).commit();
+                defaultContentTextview.setText(sharedPreferences.getString(Default.GOAL_CONTENT, getResources().getString(R.string.goalContent)));
+            }
+        });
+    }
+
+    private void showLimitGoalDialog(){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.custom_limit_goal_dialog);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int screenWidth = (int) (metrics.widthPixels * 0.8);
+        lp.width = screenWidth;//WindowManager.LayoutParams.MATCH_PARENT;
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
+        final Button LimitOK =(Button)dialog.findViewById(R.id.btnLimitOK);
+        LimitOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 dialog.dismiss();
             }
         });
 
     }
+
 
     private void showDialogTitleCountDown(){
         final Dialog dialog = new Dialog(getActivity());
@@ -359,7 +446,7 @@ public class ThemeFragment extends Fragment {
         WindowManager.LayoutParams lp = new        WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int screenWidth = (int) (metrics.widthPixels * 0.80);
+        int screenWidth = (int) (metrics.widthPixels * 0.9);
         lp.width = screenWidth;//WindowManager.LayoutParams.MATCH_PARENT;
         dialog.show();
         dialog.getWindow().setAttributes(lp);
@@ -367,8 +454,9 @@ public class ThemeFragment extends Fragment {
         final EditText dialogEditText=(EditText) dialog.findViewById(R.id.dialogEditText);
         final TextView dialogQuestion = (TextView) dialog.findViewById(R.id.txtDialogQuestion);
         final TextView dialogTitle = (TextView) dialog.findViewById(R.id.txtDialogTitle);
-        dialogQuestion.setText(R.string.titleTarget);
-        dialogTitle.setText(R.string.titleTargetDialog);
+        dialogQuestion.setWidth(0);
+        dialogQuestion.setHeight(0);
+        dialogTitle.setText(R.string.titleGoalDialog);
 
         //dialog click event
         Button dialogOkButton=(Button)dialog.findViewById(R.id.dialogOkButton);
@@ -378,14 +466,26 @@ public class ThemeFragment extends Fragment {
                 dialog.dismiss();
 
                 if (dialogEditText.getText().length() > 0) {
-                    sharedPreferences.edit().putString(Default.TARGET_TITLE, dialogEditText.getText().toString()).commit();
-                    sharedPreferences.edit().putBoolean(Default.DEFAULT_COUNTDOWN_KEY, true).commit();
-                    sharedPreferences.edit().putString(Default.TARGET_CONTENT, getResources().getString(R.string.target)).commit();
-                    timerTargetTextView.setVisibility(View.VISIBLE);
-                    dayChooseTextView.setVisibility(View.VISIBLE);
-                    dayEndTextView.setVisibility(View.VISIBLE);
-                    defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
+                    sharedPreferences.edit().putString(Default.GOAL_CONTENT, dialogEditText.getText().toString()).commit();
                 }
+
+                if(!sharedPreferences.getBoolean(Default.DEFAULT_COUNTDOWN_KEY, Default.DEFAULT_TEXT_COUNTDOWN)){
+                    new SlideDateTimePicker.Builder(myContext.getSupportFragmentManager())
+                            .setListener(dateTimeListener)
+                            .setInitialDate(new Date(/*2016-1900, 9, 30*/))
+                            //.setMinDate(minDate)
+                            //.setMaxDate(maxDate)
+                            //.setIs24HourTime(true)
+                            //.setTheme(SlideDateTimePicker.HOLO_LIGHT)
+                            .setIndicatorColor(Color.parseColor("#990000"))
+                            .build()
+                            .show();
+                    sharedPreferences.edit().putBoolean(Default.DEFAULT_COUNTDOWN_KEY, true).commit();
+                }
+                else{
+                    defaultContentTextview.setText(sharedPreferences.getString(Default.GOAL_CONTENT, getResources().getString(R.string.goalContent)));
+                }
+
             }
         });
         Button dialogCancelButton=(Button)dialog.findViewById(R.id.dialogCancelButton);
@@ -393,68 +493,23 @@ public class ThemeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-            }
-        });
-
-    }
-
-    private void showDialogSelectItem(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        //builder.setTitle("Make your selection");
-        builder.setItems(itemsChooseSelect, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int item) {
-                switch (item){
-                    case 0:
-                        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                int setMonth = 0,  setYear = 0, setDay = 0;
-                                setYear = year - mYear;
-                                if(monthOfYear - mMonth >= 0)
-                                    setMonth = monthOfYear - mMonth + setYear*12;
-                                else
-                                    setMonth = setYear*12 - (mMonth - monthOfYear);
-
-                                if(setMonth == 0)
-                                    setDay = dayOfMonth - mDay;
-                                else if(dayOfMonth - mDay >= 0)
-                                    setDay = setMonth*30 + (dayOfMonth - mDay);
-                                else
-                                    setDay = setMonth*30 - (mDay - dayOfMonth);
-                                if(setDay > 0){
-                                    sharedPreferences.edit().putString(Default.TARGET_DAY_END, String.valueOf(setDay)).commit();
-                                    dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_DAY_END, getResources().getString(R.string.dayChoose)));
-                                }
-                            }
-                        } ,mYear, mMonth, mDay);
-
-                        datePickerDialog.show();
-                        break;
-                    case 1:
-                        //sharedPreferences.edit().remove(Default.DEFAULT_COUNTDOWN_KEY).commit();
-                       /* sharedPreferences.edit().remove(Default.TARGET_CONTENT).commit();
-                        sharedPreferences.edit().remove(Default.TARGET_DAY_END).commit();
-                        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
-                        dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.dayChoose)));
-                        */
-                        /*timerTargetTextView.setVisibility(View.INVISIBLE);
-                        dayChooseTextView.setVisibility(View.INVISIBLE);
-                        dayEndTextView.setVisibility(View.INVISIBLE);*/
-                        sharedPreferences.edit().remove(Default.TARGET_CONTENT).commit();
-                        sharedPreferences.edit().remove(Default.TARGET_DAY_END).commit();
-                        defaultContentTextview.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.target)));
-                        dayChooseTextView.setText(sharedPreferences.getString(Default.TARGET_CONTENT, getResources().getString(R.string.dayChoose)));
-                        break;
+                if(!sharedPreferences.getBoolean(Default.DEFAULT_COUNTDOWN_KEY, Default.DEFAULT_TEXT_COUNTDOWN)){
+                    new SlideDateTimePicker.Builder(myContext.getSupportFragmentManager())
+                            .setListener(dateTimeListener)
+                            .setInitialDate(new Date())
+                            //.setMinDate(minDate)
+                            //.setMaxDate(maxDate)
+                            //.setIs24HourTime(true)
+                            //.setTheme(SlideDateTimePicker.HOLO_LIGHT)
+                            .setIndicatorColor(Color.parseColor("#990000"))
+                            .build()
+                            .show();
+                    sharedPreferences.edit().putBoolean(Default.DEFAULT_COUNTDOWN_KEY, true).commit();
                 }
-
             }
         });
-        AlertDialog alert = builder.create();
-        alert.show();
+
     }
-
-
-
 
         /*
     Find days between two date in miliseconds
@@ -477,8 +532,6 @@ public class ThemeFragment extends Fragment {
         //updateLearningTime(Default.RESUME_STATE);
     }
 
-
-
     /*
     Update & Restore learning time based on activity state
     @param int state- Possible value is RESUME_STATE & PAUSE_STATE
@@ -494,4 +547,64 @@ public class ThemeFragment extends Fragment {
             SettingUtils.setStudyTime(getActivity().getApplicationContext());
         }
     }
+
+    private SlideDateTimeListener dateTimeListener = new SlideDateTimeListener() {
+
+        @Override
+        public void onDateTimeSet(Date date, int year, int month, int day) {
+
+            int getDayGoal = getDate(year, month, day);
+            if(getDayGoal > 0){
+                sharedPreferences.edit().putString(Default.GOAL_DAY_END, String.valueOf(getDayGoal)).commit();
+                dayChooseTextView.setText(sharedPreferences.getString(Default.GOAL_DAY_END, getResources().getString(R.string.dayChoose)));
+
+                sharedPreferences.edit().putInt(Default.GET_DAY_GOAL, day).commit();
+                sharedPreferences.edit().putInt(Default.GET_MONTH_GOAL, month).commit();
+                sharedPreferences.edit().putInt(Default.GET_YEAR_GOAL, year).commit();
+
+                getYear = sharedPreferences.getInt(Default.GET_YEAR_GOAL, mCalendar.get(Calendar.YEAR));
+                getMonth = sharedPreferences.getInt(Default.GET_MONTH_GOAL, mCalendar.get(Calendar.MONTH));
+                getDay = sharedPreferences.getInt(Default.GET_DAY_GOAL, mCalendar.get(Calendar.DAY_OF_MONTH));
+            }
+            else{
+                Toast.makeText(getActivity(), "Please choose day larger than current day!", Toast.LENGTH_SHORT).show();
+            }
+
+            defaultContentTextview.setTextSize(18f);
+            timerTargetTextView.setVisibility(View.VISIBLE);
+            dayChooseTextView.setVisibility(View.VISIBLE);
+            dayEndTextView.setVisibility(View.VISIBLE);
+            defaultContentTextview.setText(sharedPreferences.getString(Default.GOAL_CONTENT, getResources().getString(R.string.goalContent)));
+        }
+
+        // Optional cancel listener
+        @Override
+        public void onDateTimeCancel() {
+            defaultContentTextview.setTextSize(18f);
+            timerTargetTextView.setVisibility(View.VISIBLE);
+            dayChooseTextView.setVisibility(View.VISIBLE);
+            dayEndTextView.setVisibility(View.VISIBLE);
+            defaultContentTextview.setText(sharedPreferences.getString(Default.GOAL_CONTENT, getResources().getString(R.string.goalContent)));
+        }
+    };
+
+    private int getDate(int year, int month, int day){
+
+        int setMonth = 0,  setYear = 0, setDay = 0;
+        setYear = year - mYear;
+        if(month - mMonth >= 0)
+            setMonth = month - mMonth + setYear*12;
+        else
+            setMonth = setYear*12 - (mMonth - month);
+
+        if(setMonth == 0)
+            setDay = day - mDay;
+        else if(day - mDay >= 0)
+            setDay = setMonth*30 + (day - mDay);
+        else
+            setDay = setMonth*30 - (mDay - day);
+
+        return setDay;
+    }
+
 }

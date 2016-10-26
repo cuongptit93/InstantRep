@@ -24,7 +24,6 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +54,7 @@ public class SettingFragment extends Fragment {
     SoundManager mSoundManager;
 
     //position list SettingApp
-    private int checkPositionSetting = 0, chunkplayTiemrPosition, chunkplayIntervalPosition, autoplayIntervalPosition,
-            audioSpeedPostion, clearSettingPosition, audioVolumePosition, maxVolume, currentVolume;
+    private int checkPositionSetting = 0, chunkplayTiemrPosition, chunkplayIntervalPosition, autoplayIntervalPosition, clearSettingPosition, audioVolumePosition, maxVolume, currentVolume;
 
     SharedPreferences sharedPreferences;
 
@@ -106,9 +104,9 @@ public class SettingFragment extends Fragment {
                 if (position == clearSettingPosition) {
                     //show custom confirmation alert dialog
                     showCustomAlertDialog();
-                } else if (position == audioSpeedPostion) {
+                } /*else if (position == audioSpeedPostion) {
                     showChoiceFloatValueDialog(position);
-                } else {
+                }*/ else {
                     showChoiceDialogBox(position);
                 }
             }
@@ -212,7 +210,7 @@ public class SettingFragment extends Fragment {
         alert.show();
     }
 
-    private void showChoiceFloatValueDialog(int position) {
+    /*private void showChoiceFloatValueDialog(int position) {
         String title = "", key = "";
         int selected = -1, default_index = 0;
         float[] list = {};
@@ -254,7 +252,7 @@ public class SettingFragment extends Fragment {
 
         AlertDialog alert = builder.create();
         alert.show();
-    }
+    }*/
 
     private class SettingsAdapter extends BaseAdapter {
         Context mContext;
@@ -280,8 +278,7 @@ public class SettingFragment extends Fragment {
 
         @Override
         public boolean isEnabled(int position) {
-            int[] listPositon = {chunkplayTiemrPosition, chunkplayIntervalPosition, autoplayIntervalPosition,
-                    audioSpeedPostion, clearSettingPosition, audioVolumePosition};
+            int[] listPositon = {chunkplayTiemrPosition, chunkplayIntervalPosition, autoplayIntervalPosition, clearSettingPosition, audioVolumePosition};
             for (int i = 0; i < listPositon.length; i++) {
                 if (position == listPositon[i]) {
                     return true;

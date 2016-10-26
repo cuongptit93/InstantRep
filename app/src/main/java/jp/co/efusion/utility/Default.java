@@ -46,6 +46,11 @@ public class Default {
 
 
     //    KEY FOR SHARE PREFERENCE VALUE
+
+    public static final String GET_DAY_GOAL = "get_day_goal";
+    public static final String GET_MONTH_GOAL = "get_month_goal";
+    public static final String GET_YEAR_GOAL = "get_year_goal";
+
     public static final String SHARE_PREFERENCE_NAME="air_share_preference";
 
     public static final String IN_APP_PURCHASE="in_app_purchase";
@@ -54,11 +59,9 @@ public class Default {
 
     public static final String DEFAULT_COUNTDOWN_KEY = "default_countdown_key";
 
-    public static final String TARGET_CONTENT = "target_content";
+    public static final String GOAL_CONTENT = "goal_content";
 
-    public static final String TARGET_TITLE = "target_title";
-
-    public static final String TARGET_DAY_END = "target_day_end";
+    public static final String GOAL_DAY_END = "goal_day_end";
 
     public static final String LEARNING_INITIAL_DATE_KEY="learning_initial_date_key";
 
